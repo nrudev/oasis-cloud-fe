@@ -14,6 +14,7 @@ const config: Config = {
         navy: "#1A278C",
         darkBlue: "#373B5C",
         purple: "#8859EC",
+        mellowYellow: "#FFD789",
         "gray-80": "#F3F3F3",
         "gray-100": "#F5F5F5",
         "gray-200": "#E5E5E5",

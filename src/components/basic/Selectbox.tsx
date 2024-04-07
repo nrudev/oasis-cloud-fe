@@ -6,14 +6,12 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import { SelectboxItem } from "@/datas/select";
 
 type Props = {
   labelId: string;
   selectLabel: string;
-  itemList: {
-    value: string;
-    itemLabel: string;
-  }[];
+  itemList: SelectboxItem[];
   state: string;
   setState: (value: string) => void;
   className?: string;
@@ -65,23 +63,24 @@ function Selectbox({
           },
         }}
       >
-        {itemList.map(({ value, itemLabel }) => (
-          <MenuItem
-            key={value}
-            value={value}
-            className="font-bold font-roboto uppercase"
-            sx={{
-              "&.Mui-selected": {
-                backgroundColor: "#c8c8c8",
-                "&:hover": {
+        {itemList.length > 0 &&
+          itemList.map(({ value, itemLabel }) => (
+            <MenuItem
+              key={value}
+              value={value}
+              className="font-bold font-roboto uppercase"
+              sx={{
+                "&.Mui-selected": {
                   backgroundColor: "#c8c8c8",
+                  "&:hover": {
+                    backgroundColor: "#c8c8c8",
+                  },
                 },
-              },
-            }}
-          >
-            {itemLabel}
-          </MenuItem>
-        ))}
+              }}
+            >
+              {itemLabel || value}
+            </MenuItem>
+          ))}
       </Select>
     </FormControl>
   );

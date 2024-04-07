@@ -9,6 +9,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useAtom } from "jotai";
+import { DevTools } from "jotai-devtools";
 import { jwtDecode } from "jwt-decode";
 import { SnackbarProvider } from "notistack";
 import authAtom from "@/datas/auth";
@@ -28,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <DevTools />
       <ReactQueryDevtools />
       <SnackbarProvider />
       <GoogleOAuthProvider

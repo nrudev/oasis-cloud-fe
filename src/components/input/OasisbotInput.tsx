@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { TextField } from "@mui/material";
 
 type Props = {
   id: string;
-  value: string;
+  value: string | number;
   setValue: (value: string) => void;
 };
 

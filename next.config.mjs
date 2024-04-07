@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ["lh3.googleusercontent.com", "localhost"],
   },
+  transpilePackages: ["jotai-devtools"],
 };
 
 export default nextConfig;
