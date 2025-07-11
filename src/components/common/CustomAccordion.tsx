@@ -1,6 +1,8 @@
-import Icon from '@/components/Icon';
-import { Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState } from "react";
+
+import { Stack, Typography } from "@mui/material";
+
+import Icon from "@/components/Icon";
 
 interface Props {
   title: string;
@@ -38,8 +40,7 @@ function CustomAccordion({ title, contents }: Props) {
       </Stack>
       {flag ? null : contents}
     </Stack>
-
-  )
+  );
 }
 
-export default CustomAccordion
+export default CustomAccordion;

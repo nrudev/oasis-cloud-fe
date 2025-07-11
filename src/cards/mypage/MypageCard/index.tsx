@@ -10,14 +10,13 @@ import MypageExchange from "@/cards/mypage/MypageCard/MypageExchange";
 import MypageInfo from "@/cards/mypage/MypageCard/MypageInfo";
 import MypageSubscribe from "@/cards/mypage/MypageCard/MypageSubscribe";
 import SupportCard from "@/cards/mypage/MypageCard/SupportCard";
-import Icon from "@/components/Icon/index";
+import CustomAccordion from "@/components/common/CustomAccordion";
 import PromotionDialog from "@/components/dialog/PromotionDialog";
 import useDialogGlobal from "@/components/dialog/useDialogGlobal";
 import authAtom from "@/datas/auth";
 import { promotionCodeAtom } from "@/datas/subscribe";
 import { usePaymentMethodQuery } from "@/hooks/query/usePayment";
 import { usePromotionMutation } from "@/hooks/query/useSubcribe";
-import CustomAccordion from "@/components/common/CustomAccordion";
 
 export default function MypageCard() {
   const [auth] = useAtom(authAtom);
