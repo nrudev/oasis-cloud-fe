@@ -10,9 +10,18 @@ export function useSubscribeQuery() {
       return res.data?.data;
     },
   });
-  return {
-    subscribeQuery,
-  };
+  return { subscribeQuery };
+}
+
+export function useSuspendedSubscribeQuery() {
+  const suspendedSubscribeQuery = useQuery({
+    queryKey: ["getSuspendedSubscribe"],
+    queryFn: async () => {
+      const res = await api.get<ResponseT<Subscribe.SubscribeT>>("/subscribe/suspend");
+      return res.data?.data;
+    },
+  });
+  return { suspendedSubscribeQuery };
 }
 
 export function useProductQuery() {

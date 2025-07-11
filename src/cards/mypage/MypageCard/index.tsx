@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { useRouter } from "next/router";
 
 import { InputBase, Stack, Typography } from "@mui/material";
@@ -19,12 +17,12 @@ import authAtom from "@/datas/auth";
 import { promotionCodeAtom } from "@/datas/subscribe";
 import { usePaymentMethodQuery } from "@/hooks/query/usePayment";
 import { usePromotionMutation } from "@/hooks/query/useSubcribe";
+import CustomAccordion from "@/components/common/CustomAccordion";
 
 export default function MypageCard() {
   const [auth] = useAtom(authAtom);
   const [promotionCode, setPromotionCode] = useAtom(promotionCodeAtom);
   const { openDialog } = useDialogGlobal();
-  const [flag, setFlag] = useState(true);
   const queryClient = useQueryClient();
   const {
     paymentMethodQuery: { data: paymentMethodData },
@@ -55,10 +53,6 @@ export default function MypageCard() {
     localStorage.removeItem("authorizationrefresh");
     push("/");
   };
-
-  const buttonClick = () => {
-    setFlag(!flag);
-  };
   return (
     <Card>
       <Stack className="h-full w-full items-center justify-between gap-12 px-4 py-16 md:px-8 xl:px-16">
@@ -82,30 +76,7 @@ export default function MypageCard() {
               {paymentMethodData?.cardNumber}
             </Typography>
           </MypageInfo>
-          <Stack>
-            <Stack
-              direction="row"
-              className="h-full w-full cursor-pointer items-center"
-              onClick={buttonClick}
-            >
-              {flag ? (
-                <Icon src="/icons/arrow/right.png" size={28} />
-              ) : (
-                <Icon src="/icons/arrow/down.png" size={28} />
-              )}
-              <Typography
-                sx={{
-                  fontFamily: "Spoqa Han Sans Neo",
-                  fontSize: 16,
-                  fontWeight: 500,
-                  lineHeight: "120%",
-                }}
-              >
-                지원중인 카드사
-              </Typography>
-            </Stack>
-            {flag ? null : <SupportCard />}
-          </Stack>
+          <CustomAccordion title="지원중인 카드사" contents={<SupportCard />} />
         </Stack>
         <MypageInfo title="프로모션 코드" buttonText="적용하기" onClick={applyPromotionCode}>
           <InputBase
