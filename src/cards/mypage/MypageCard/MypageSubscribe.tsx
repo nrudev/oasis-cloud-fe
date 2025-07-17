@@ -3,16 +3,21 @@ import { useRouter } from "next/router";
 import { ButtonBase, Stack, Typography } from "@mui/material";
 
 import MypageInfo from "@/cards/mypage/MypageCard/MypageInfo";
+import SuspendedSubscribeCard from "@/cards/subscribe/SubscribeCard/SuspendedSubscribeCard";
+import CustomAccordion from "@/components/common/CustomAccordion";
 import MySubscribeDialog from "@/components/dialog/MySubscribeDialog";
 import useDialogGlobal from "@/components/dialog/useDialogGlobal";
 import { useSubscribeQuery } from "@/hooks/query/useSubcribe";
 
 export default function MypageSubscribe() {
   const { push } = useRouter();
+
   const {
     subscribeQuery: { data: subscribeData },
   } = useSubscribeQuery();
+
   const { openDialog } = useDialogGlobal();
+
   return (
     <Stack className="w-full gap-4">
       <MypageInfo
@@ -29,7 +34,8 @@ export default function MypageSubscribe() {
       {subscribeData?.expiryDate && (
         <Stack direction="row" className="h-full w-full items-center justify-between">
           <Typography variant="200M" className="text-brand">
-            다음 결제일: {subscribeData.expiryDate.slice(0, 10)}
+            {subscribeData.useCoupon ? "쿠폰 만료일" : "다음 결제일"}:{" "}
+            {subscribeData.expiryDate.slice(0, 10)}
           </Typography>
           <ButtonBase
             onClick={() => {
@@ -41,6 +47,9 @@ export default function MypageSubscribe() {
             </Typography>
           </ButtonBase>
         </Stack>
+      )}
+      {subscribeData?.useCoupon && (
+        <CustomAccordion title="기존 구독권 보기" contents={<SuspendedSubscribeCard />} />
       )}
     </Stack>
   );

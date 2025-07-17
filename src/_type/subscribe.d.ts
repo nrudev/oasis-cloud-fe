@@ -8,6 +8,7 @@ declare namespace Subscribe {
     productName: string;
     productMonth: Subscribe.ProductMonth;
     expiryDate: string;
+    useCoupon?: boolean;
   }
   interface PromotionT {
     code: string;
