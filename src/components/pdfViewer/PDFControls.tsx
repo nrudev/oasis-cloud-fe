@@ -1,11 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+
 import { Button } from "@mui/material";
 
 interface PDFControlsProps {
   pageNumber: number;
-  numPages: number;
+  pages: number;
   scale: number;
   onPrevPage: () => void;
   onNextPage: () => void;
@@ -16,7 +17,7 @@ interface PDFControlsProps {
 
 function PDFControls({
   pageNumber,
-  numPages,
+  pages,
   scale,
   onPrevPage,
   onNextPage,
@@ -27,64 +28,44 @@ function PDFControls({
   const router = useRouter();
 
   return (
-    <div className="flex items-center justify-center gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
+    <div className="mb-6 flex items-center justify-center gap-4 rounded-lg bg-gray-50 p-4">
       {showBackButton && (
         <>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => router.push("/dashboard")}
-          >
+          <Button variant="contained" color="primary" onClick={() => router.push("/dashboard")}>
             오아시스로 돌아가기
           </Button>
-          <div className="border-l border-gray-300 h-6 mx-2"></div>
-
+          <div className="mx-2 h-6 border-l border-gray-300" />
         </>
       )}
 
-      <Button
-        onClick={onPrevPage}
-        disabled={pageNumber <= 1}
-        variant="outlined"
-        color="primary"
-      >
+      <Button onClick={onPrevPage} disabled={pageNumber <= 1} variant="outlined" color="primary">
         이전 페이지
       </Button>
 
-      <span className="text-sm text-gray-600 font-medium">
-        {pageNumber} / {numPages}
+      <span className="text-sm font-medium text-gray-600">
+        {pageNumber} / {pages}
       </span>
 
       <Button
         onClick={onNextPage}
-        disabled={pageNumber >= numPages}
+        disabled={pageNumber >= pages}
         variant="outlined"
         color="primary"
       >
         다음 페이지
       </Button>
 
-      <div className="border-l border-gray-300 h-6 mx-2"></div>
+      <div className="mx-2 h-6 border-l border-gray-300" />
 
-      <Button
-        onClick={onZoomOut}
-        variant="outlined"
-        size="small"
-        disabled={scale <= 0.5}
-      >
+      <Button onClick={onZoomOut} variant="outlined" size="small" disabled={scale <= 0.5}>
         -
       </Button>
 
-      <span className="text-sm text-gray-600 min-w-[60px] text-center font-medium">
+      <span className="min-w-[60px] text-center text-sm font-medium text-gray-600">
         {Math.round(scale * 100)}%
       </span>
 
-      <Button
-        onClick={onZoomIn}
-        variant="outlined"
-        size="small"
-        disabled={scale >= 3.0}
-      >
+      <Button onClick={onZoomIn} variant="outlined" size="small" disabled={scale >= 3.0}>
         +
       </Button>
     </div>

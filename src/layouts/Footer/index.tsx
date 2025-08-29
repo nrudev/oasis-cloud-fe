@@ -28,9 +28,7 @@ export default function Footer({ color }: FooterProps) {
           <Typography variant="200R">
             상호명 : 옵티머스 오아시스(주) | 대표자 이주원 | 사업자번호 : 726-81-03772
           </Typography>
-          <Typography variant="200R">
-            주소 : 서울 구로구 디지털로31길 12 2F 42
-          </Typography>
+          <Typography variant="200R">주소 : 서울 구로구 디지털로31길 12 2F 42</Typography>
 
           {/* {(["facebook", "linkedin", "naver", "kakao"] as SocialType[]).map(
             social => (

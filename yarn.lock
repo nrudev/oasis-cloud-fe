@@ -858,13 +858,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-pdf@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-pdf/-/react-pdf-7.0.0.tgz#75ddcfd4c7a7f5c3f9d96ec506d5cddeb1020fbf"
-  integrity sha512-G0a+5UiKk3AvEauBP/Js7r9kGZNW3iBbS6kXkH0foGSaKWR6K3ElTe7Y4tlolc2VKbM9udmMxpkbxh/dtR2wXA==
-  dependencies:
-    react-pdf "*"
-
 "@types/react-transition-group@^4.4.12":
   version "4.4.12"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.12.tgz#b5d76568485b02a307238270bfe96cb51ee2a044"
@@ -3947,7 +3940,7 @@ react-is@^19.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.0.0.tgz#d6669fd389ff022a9684f708cf6fa4962d1fea7a"
   integrity sha512-H91OHcwjZsbq3ClIDHMzBShc1rotbfACdWENsmEf0IFvZ3FgGPtdHMcsv45bQ1hAbgdfiA8SnxTKfDS+x/8m2g==
 
-react-pdf@*, react-pdf@^10.1.0:
+react-pdf@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/react-pdf/-/react-pdf-10.1.0.tgz#a541b7ccb121154949f4dd46be252dcb8f170f16"
   integrity sha512-iUI1YqWgwwZcsXjrehTp3Yi8nT/bvTaWULaRMMyJWvoqqSlopk4LQQ9GDqUnDtX3gzT2glrqrLbjIPl56a+Q3w==

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
 import PDFControls from "@/components/pdfViewer/PDFControls";
@@ -14,21 +14,21 @@ interface PDFViewerProps {
 }
 
 function PDFViewer({ filePath, showBackButton = true }: PDFViewerProps) {
-  const [numPages, setNumPages] = useState<number>(0);
+  const [pages, setPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [scale, setScale] = useState<number>(1.0);
 
-  function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
-    setNumPages(numPages);
+  const onDocumentLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
+    setPages(numPages);
     setPageNumber(1);
-  }
+  }, []);
 
   const goToPrevPage = () => {
     setPageNumber(prev => Math.max(prev - 1, 1));
   };
 
   const goToNextPage = () => {
-    setPageNumber(prev => Math.min(prev + 1, numPages));
+    setPageNumber(prev => Math.min(prev + 1, pages));
   };
 
   const zoomIn = () => {
@@ -40,10 +40,10 @@ function PDFViewer({ filePath, showBackButton = true }: PDFViewerProps) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto max-w-4xl">
       <PDFControls
         pageNumber={pageNumber}
-        numPages={numPages}
+        pages={pages}
         scale={scale}
         onPrevPage={goToPrevPage}
         onNextPage={goToNextPage}
@@ -55,14 +55,16 @@ function PDFViewer({ filePath, showBackButton = true }: PDFViewerProps) {
         <Document
           file={filePath}
           onLoadSuccess={onDocumentLoadSuccess}
-          loading={<div className="text-center py-8">PDF 문서를 로딩 중입니다...</div>}
-          error={<div className="text-center py-8 text-red-500">PDF 문서를 불러올 수 없습니다.</div>}
+          loading={<div className="py-8 text-center">PDF 문서를 로딩 중입니다...</div>}
+          error={
+            <div className="py-8 text-center text-red-500">PDF 문서를 불러올 수 없습니다.</div>
+          }
           noData=""
         >
           <Page
             pageNumber={pageNumber}
             scale={scale}
-            loading={<div className="text-center py-8">페이지를 로딩 중입니다...</div>}
+            loading={<div className="py-8 text-center">페이지를 로딩 중입니다...</div>}
             renderTextLayer={false}
             renderAnnotationLayer={false}
           />
