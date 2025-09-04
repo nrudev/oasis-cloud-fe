@@ -14,7 +14,7 @@ export default function OasisLab() {
         <Stack className="gap-4">
           <Stack direction="row" className="h-[495px] gap-4">
             <Box className="w-3/12">
-              <RunOasisBotCard />
+              <RunOasisBotCard isConnected={false} />
             </Box>
             <Stack className="h-[495px] w-9/12 gap-4">
               <Stack direction="row" className="h-full w-full gap-4">
