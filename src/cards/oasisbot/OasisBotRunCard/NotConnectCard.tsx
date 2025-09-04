@@ -1,4 +1,4 @@
-import { CardContent, Stack } from "@mui/material";
+import { CardContent } from "@mui/material";
 import { useAtom } from "jotai";
 
 import Card from "@/cards/Card";
