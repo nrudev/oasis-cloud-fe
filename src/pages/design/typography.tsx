@@ -19,6 +19,7 @@ export default function Sample() {
         <Typography variant="bodyL">bodyL. body</Typography>
         <Typography variant="bodyDF">bodyDF. body</Typography>
         <Typography variant="bodyS">bodyS. body</Typography>
+        <Typography variant="bodyNC">bodyNC. body</Typography>
         <Typography variant="500B">500B. single text</Typography>
         <Typography variant="500M">500M. single text</Typography>
         <Typography variant="500R">500R. single text</Typography>

@@ -1,16 +1,24 @@
+
+
 import { CardContent } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 import Card from "@/cards/Card";
 import CardFooter from "@/cards/CardFooter";
 import CardHeader from "@/cards/CardHeader";
+
 import DetailChip from "@/components/chip/DetailChip";
 import { useBotInfo } from "@/hooks/query/useOasisBot";
 import OasisBotTransactionCompactColumns from "@/tables/OasisBotTransactionCompactColumns";
+import NotConnect from "@/components/NotConnect";
 
-function BotTransactionCard() {
+interface Props {
+  isConnected: boolean
+}
+function BotTransactionCard({ isConnected }: Props) {
   const { transactionQuery } = useBotInfo();
   const { isLoading, data: OasisBotTransactionCompactMockRows } = transactionQuery;
+
   return (
     <Card>
       <CardHeader id="history" title="오아시스 BOT 실시간 거래내역" />
@@ -25,19 +33,26 @@ function BotTransactionCard() {
           loading={isLoading}
           columns={OasisBotTransactionCompactColumns}
           rows={OasisBotTransactionCompactMockRows ?? []}
+          slots={{ noRowsOverlay: NotConnect }}
+          slotProps={{
+            noRowsOverlay: { customMessage: "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는 Bot을 설정해\n 거래소별 자동매매 수익률을 실시간으로 확인해 보세요 ", isConnected: isConnected }
+          }}
           hideFooter
           sx={{
             border: "none",
             "& .MuiDataGrid-cell:focus": {
               outline: "none",
             },
+            ".MuiDataGrid-overlayWrapper": { height: "215px" }
           }}
         />
       </CardContent>
-      <CardFooter>
+      {/* <CardFooter>
         <DetailChip onClick={() => console.log("clicked")} />
-      </CardFooter>
+      </CardFooter> */}
     </Card>
+
+
   );
 }
 

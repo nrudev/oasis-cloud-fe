@@ -21,6 +21,7 @@ export default function AssetStatusInfo({ tradeStyleData }: AssetStatusInfoProps
         <Typography variant="400M" className="text-neutral-100">
           Hi! {userName}님
         </Typography>
+
         <Stack direction="row" className="gap-1">
           {tradeStyleData?.tag.map(keyword => (
             <Typography key={keyword} variant="200R" className="text-white">

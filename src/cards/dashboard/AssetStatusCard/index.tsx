@@ -8,6 +8,8 @@ import AssetStatusInfo from "@/cards/dashboard/AssetStatusCard/AssetStatusInfo";
 import CharacterIcon from "@/components/Icon/CharacterIcon";
 import { useInfoTradeStyle } from "@/hooks/query/useInfo";
 
+import NotConnectInfo from "./NotConnectInfo";
+
 function calculateHappiness(totalProfitLossRate: number) {
   if (totalProfitLossRate <= -11) return 1;
   if (totalProfitLossRate <= -5) return 2;
@@ -18,15 +20,24 @@ function calculateHappiness(totalProfitLossRate: number) {
   return 7;
 }
 
-export default function AssetStatusCard() {
+interface Props {
+  isConnected: boolean;
+}
+
+export default function AssetStatusCard({ isConnected }: Props) {
   const { tradeStyleQuery } = useInfoTradeStyle();
   const { data: tradeStyleData } = tradeStyleQuery;
+
   return (
     <Card sx={{ background: "url('/assetstatus/bg.png')" }}>
       <CardHeader id="rise-arrow" title="실시간 종합 자산현황" isDark />
       <CardContent className="flex h-full max-h-[260px] w-full flex-row">
         <Box className="w-1/2 shrink-0">
-          <AssetStatusInfo tradeStyleData={tradeStyleData} />
+          {isConnected === true ? (
+            <AssetStatusInfo tradeStyleData={tradeStyleData} />
+          ) : (
+            <NotConnectInfo />
+          )}
         </Box>
         <Box className="relative w-1/2">
           <Stack direction="column" className="h-full items-center justify-center">

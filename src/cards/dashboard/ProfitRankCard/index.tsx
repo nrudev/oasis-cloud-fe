@@ -24,6 +24,7 @@ function ProfitRankCard() {
             "& .MuiDataGrid-cell:focus": {
               outline: "none",
             },
+            ".MuiDataGrid-overlayWrapper": { height: "215px" }
           }}
         />
       </CardContent>

@@ -5,10 +5,12 @@ import exchangeAtom from "@/datas/exchange";
 import api from "@/libs/network";
 
 export function usePresetQuery() {
+  const exchangeId = useAtomValue(exchangeAtom);
+
   const presetQuery = useQuery({
     queryKey: ["getPreset"],
     queryFn: async () => {
-      const res = await api.get<ResponseT<Preset.PresetT[]>>("/preset");
+      const res = await api.get<ResponseT<Preset.PresetT[]>>(`/preset?exchange=${exchangeId}`);
       return res.data?.data;
     },
   });
