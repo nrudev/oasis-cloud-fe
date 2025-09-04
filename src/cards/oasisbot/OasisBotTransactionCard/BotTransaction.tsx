@@ -9,7 +9,19 @@ interface Props {
   isConnected: boolean;
 }
 
-export default function BotTransaction({ isConnected }: Props) {
+function NoRowsOverlayWrapper({ isConnected }: Props) {
+  return (
+    <NotConnect
+      customMessage={
+        "아직 거래내역이 없어요\n Bot을 설정해 자동매매가 발생하면\n 자동으로 내역이 나와요"
+      }
+      isConnected={isConnected}
+      hasButton={false}
+    />
+  );
+}
+
+export default function BotTransaction() {
   const { transactionQuery } = useBotInfo();
   const { isLoading, data: OasisBotTransactionCompactRows } = transactionQuery;
   return (
@@ -18,15 +30,7 @@ export default function BotTransaction({ isConnected }: Props) {
         loading={isLoading}
         columns={OasisBotTransactionColumns}
         rows={OasisBotTransactionCompactRows ?? []}
-        slots={{ noRowsOverlay: NotConnect }}
-        slotProps={{
-          noRowsOverlay: {
-            customMessage:
-              "아직 거래내역이 없어요\n Bot을 설정해 자동매매가 발생하면\n 자동으로 내역이 나와요",
-            isConnected,
-            hasButton: false,
-          },
-        }}
+        slots={{ noRowsOverlay: NoRowsOverlayWrapper }}
         hideFooter
         sx={{ border: "none", ".MuiDataGrid-overlayWrapper": { height: "215px" } }}
       />

@@ -1,21 +1,27 @@
-
-
 import { CardContent } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 import Card from "@/cards/Card";
-import CardFooter from "@/cards/CardFooter";
 import CardHeader from "@/cards/CardHeader";
-
-import DetailChip from "@/components/chip/DetailChip";
+import NotConnect from "@/components/NotConnect";
 import { useBotInfo } from "@/hooks/query/useOasisBot";
 import OasisBotTransactionCompactColumns from "@/tables/OasisBotTransactionCompactColumns";
-import NotConnect from "@/components/NotConnect";
 
 interface Props {
-  isConnected: boolean
+  isConnected: boolean;
 }
-function BotTransactionCard({ isConnected }: Props) {
+
+function NoRowsOverlayWrapper({ isConnected }: Props) {
+  return (
+    <NotConnect
+      customMessage={
+        "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는 Bot을 설정해\n 거래소별 자동매매 수익률을 실시간으로 확인해 보세요 "
+      }
+      isConnected={isConnected}
+    />
+  );
+}
+function BotTransactionCard() {
   const { transactionQuery } = useBotInfo();
   const { isLoading, data: OasisBotTransactionCompactMockRows } = transactionQuery;
 
@@ -33,17 +39,14 @@ function BotTransactionCard({ isConnected }: Props) {
           loading={isLoading}
           columns={OasisBotTransactionCompactColumns}
           rows={OasisBotTransactionCompactMockRows ?? []}
-          slots={{ noRowsOverlay: NotConnect }}
-          slotProps={{
-            noRowsOverlay: { customMessage: "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는 Bot을 설정해\n 거래소별 자동매매 수익률을 실시간으로 확인해 보세요 ", isConnected: isConnected }
-          }}
+          slots={{ noRowsOverlay: NoRowsOverlayWrapper }}
           hideFooter
           sx={{
             border: "none",
             "& .MuiDataGrid-cell:focus": {
               outline: "none",
             },
-            ".MuiDataGrid-overlayWrapper": { height: "215px" }
+            ".MuiDataGrid-overlayWrapper": { height: "215px" },
           }}
         />
       </CardContent>
@@ -51,8 +54,6 @@ function BotTransactionCard({ isConnected }: Props) {
         <DetailChip onClick={() => console.log("clicked")} />
       </CardFooter> */}
     </Card>
-
-
   );
 }
 

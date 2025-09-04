@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { CardContent, Divider, Stack } from "@mui/material";
+import { CardContent, Divider } from "@mui/material";
 import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 import { useAtom } from "jotai";
 

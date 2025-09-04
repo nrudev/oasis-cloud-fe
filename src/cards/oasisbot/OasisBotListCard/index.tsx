@@ -17,6 +17,18 @@ interface Props {
   nav: string;
   isConnected: boolean;
 }
+
+function NoRowsOverlayWrapper({ isConnected }: Omit<Props, "nav">) {
+  return (
+    <NotConnect
+      customMessage={
+        "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는\n Bot을 설정해 자동매매를 시작해 보세요"
+      }
+      isConnected={isConnected}
+    />
+  );
+}
+
 export default function OasisBotListCard({ nav, isConnected }: Props) {
   const [selectedRow, setSelectedRow] = useAtom(selectedBotRowAtom);
   const columns = OasisBotListColumns;
@@ -36,14 +48,7 @@ export default function OasisBotListCard({ nav, isConnected }: Props) {
           onRowSelectionModelChange={newRow => setSelectedRow(newRow)}
           rowSelectionModel={selectedRow}
           hideFooter
-          slots={{ noRowsOverlay: NotConnect }}
-          slotProps={{
-            noRowsOverlay: {
-              customMessage:
-                "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는\n Bot을 설정해 자동매매를 시작해 보세요",
-              isConnected,
-            },
-          }}
+          slots={{ noRowsOverlay: NoRowsOverlayWrapper }}
           sx={{
             ".MuiDataGrid-overlayWrapper": { height: "215px" },
             border: "none",
