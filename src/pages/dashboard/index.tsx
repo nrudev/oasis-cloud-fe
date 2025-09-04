@@ -24,7 +24,6 @@ export default function Home() {
     else setIsConnected(true);
   }, [data]);
 
-
   return (
     <Layout>
       <Carousel minWidth={1400}>

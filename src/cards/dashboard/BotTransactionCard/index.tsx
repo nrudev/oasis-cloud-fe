@@ -11,20 +11,30 @@ interface Props {
   isConnected: boolean;
 }
 
-function NoRowsOverlayWrapper({ isConnected }: Props) {
-  return (
-    <NotConnect
-      customMessage={
-        "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는 Bot을 설정해\n 거래소별 자동매매 수익률을 실시간으로 확인해 보세요 "
-      }
-      isConnected={isConnected}
-    />
-  );
-}
-function BotTransactionCard() {
+// function NoRowsOverlayWrapper({ isConnected }: Props) {
+//   return (
+//     <NotConnect
+//       customMessage={
+//         "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는 Bot을 설정해\n 거래소별 자동매매 수익률을 실시간으로 확인해 보세요 "
+//       }
+//       isConnected={isConnected}
+//     />
+//   );
+// }
+function BotTransactionCard({ isConnected }: Props) {
   const { transactionQuery } = useBotInfo();
   const { isLoading, data: OasisBotTransactionCompactMockRows } = transactionQuery;
 
+  const noRowsOverlayWrapper = () => {
+    return (
+      <NotConnect
+        customMessage={
+          "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는 Bot을 설정해\n 거래소별 자동매매 수익률을 실시간으로 확인해 보세요 "
+        }
+        isConnected={isConnected}
+      />
+    );
+  };
   return (
     <Card>
       <CardHeader id="history" title="오아시스 BOT 실시간 거래내역" />
@@ -39,7 +49,7 @@ function BotTransactionCard() {
           loading={isLoading}
           columns={OasisBotTransactionCompactColumns}
           rows={OasisBotTransactionCompactMockRows ?? []}
-          slots={{ noRowsOverlay: NoRowsOverlayWrapper }}
+          slots={{ noRowsOverlay: noRowsOverlayWrapper }}
           hideFooter
           sx={{
             border: "none",
