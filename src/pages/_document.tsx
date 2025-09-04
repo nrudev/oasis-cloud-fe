@@ -1,5 +1,7 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
+import JsonLd from "@/components/JsonLd";
+
 export default function Document() {
   return (
     <Html lang="en">
@@ -31,7 +33,7 @@ export default function Document() {
 
       <meta name="naver-site-verification" content="25ef148db53f27df80cc82365759cccb2db3c3fc" />
       <script src="https://static.okx.com/cdn/assets/okfe/libs/okxOAuth/index.js" async />
-
+      <JsonLd />
       <body>
         <Main />
         <NextScript />
