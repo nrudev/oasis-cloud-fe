@@ -21,18 +21,17 @@ import {
   presetWeightInit,
 } from "@/datas/preset";
 import { useCombinedPresets, usePresetMutation } from "@/hooks/query/usePreset";
+import { useSubscribeQuery } from "@/hooks/query/useSubcribe";
 import { isDefaultPreset, presetDataToPresetWeight } from "@/libs/preset";
 
 interface Props {
   isConnected: boolean;
 }
 export default function PresetInfoCard({ isConnected }: Props) {
-  // const {
-  //   presetQuery: { data: presetData },
-  // } = usePresetQuery();
-  // const {
-  //   defaultPresetQuery: { data: defaultPresetData },
-  // } = useDefaultPresetQuery();
+  const {
+    subscribeQuery: { data: subscribeData },
+  } = useSubscribeQuery();
+
   const { data } = useCombinedPresets();
   const { deletePresetMutation } = usePresetMutation();
   const [isCreate, setIsCreate] = useState(false);
@@ -76,7 +75,7 @@ export default function PresetInfoCard({ isConnected }: Props) {
         }
       />
       <CardContent>
-        {isConnected === true ? (
+        {isConnected === true && subscribeData?.productName.includes("PREMIUM") ? (
           <PresetInfo />
         ) : (
           <NotConnect
@@ -86,7 +85,7 @@ export default function PresetInfoCard({ isConnected }: Props) {
           />
         )}
       </CardContent>
-      {isConnected && (
+      {isConnected && subscribeData?.productName.includes("PREMIUM") && (
         <CardFooter>
           <CardButton
             variant="contained"

@@ -1,3 +1,5 @@
+import { Stack } from "@mui/material";
+
 import ConnectOasisBotRunCard from "./ConnectOasisBotRunCard";
 import NotConnectCard from "./NotConnectCard";
 
@@ -6,7 +8,11 @@ interface Props {
 }
 
 function OasisBotRunCard({ isConnected }: Props) {
-  return <div>{isConnected === true ? <ConnectOasisBotRunCard /> : <NotConnectCard />}</div>;
+  return (
+    <Stack className="h-full w-full">
+      {isConnected === true ? <ConnectOasisBotRunCard /> : <NotConnectCard />}
+    </Stack>
+  );
 }
 
 export default OasisBotRunCard;
