@@ -75,7 +75,7 @@ export default function PresetInfoCard({ isConnected }: Props) {
         }
       />
       <CardContent>
-        {isConnected === true && subscribeData?.productName.includes("PREMIUM") ? (
+        {isConnected === true && subscribeData?.productName.toLowerCase().includes("premium") ? (
           <PresetInfo />
         ) : (
           <NotConnect
@@ -85,7 +85,7 @@ export default function PresetInfoCard({ isConnected }: Props) {
           />
         )}
       </CardContent>
-      {isConnected && subscribeData?.productName.includes("PREMIUM") && (
+      {isConnected && subscribeData?.productName.toLowerCase().includes("premium") && (
         <CardFooter>
           <CardButton
             variant="contained"
