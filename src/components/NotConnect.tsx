@@ -7,6 +7,7 @@ interface NotConnectProps {
   isConnected: boolean;
   hasButton?: boolean;
   msgButton?: string;
+  link?: string;
 }
 
 export default function NotConnect({
@@ -14,6 +15,7 @@ export default function NotConnect({
   isConnected,
   hasButton = true,
   msgButton = "거래소 연동하기",
+  link = "/api-connection",
 }: NotConnectProps) {
   const router = useRouter();
 
@@ -41,7 +43,7 @@ export default function NotConnect({
       {hasButton && (
         <Button
           variant="outlined"
-          onClick={() => router.push("/api-connection")}
+          onClick={() => router.push(link)}
           sx={{
             borderColor: "#223CE9",
             color: "#223CE9",
