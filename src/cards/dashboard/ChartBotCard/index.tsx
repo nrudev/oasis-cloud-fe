@@ -7,7 +7,12 @@ import CustomChart from "@/cards/dashboard/ChartBotCard/CustomChart";
 import Panel from "@/cards/dashboard/ChartBotCard/Panel";
 import { useDashboardChart } from "@/hooks/query/useChart";
 
-export default function ChartBotCard() {
+import NotConnectPanel from "./NotConnectPanel";
+
+interface Props {
+  isConnected: boolean;
+}
+export default function ChartBotCard({ isConnected }: Props) {
   const { dashboardChartQuery } = useDashboardChart();
   const { data: chartItem } = dashboardChartQuery;
   const chart = chartItem || [];
@@ -16,7 +21,11 @@ export default function ChartBotCard() {
   return (
     <Card>
       <Box p={2}>
-        <Panel setMenuId={setMenuId} menuId={menuId} chart={chart} />
+        {isConnected === true ? (
+          <Panel setMenuId={setMenuId} menuId={menuId} chart={chart} />
+        ) : (
+          <NotConnectPanel />
+        )}
       </Box>
       <CustomChart
         date={chart.length > 0 ? chart[menuId].chartData.date : []}

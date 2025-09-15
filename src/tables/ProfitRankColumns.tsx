@@ -26,7 +26,7 @@ const ProfitRankColumns: GridColDef[] = [
   },
   {
     field: "accumulatedProfit",
-    headerName: "누적수익금액",
+    headerName: "누적수익률",
     flex: 1,
     headerClassName: "text-slate-500",
     renderCell: (

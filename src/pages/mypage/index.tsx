@@ -4,7 +4,7 @@ import MypageCard from "@/cards/mypage/MypageCard";
 import MypageTitleCard from "@/cards/mypage/MypageTitleCard";
 import Layout from "@/layouts/Layout";
 
-function OasisBot() {
+function MyPage() {
   return (
     <Layout>
       <Box className="h-[530px] w-full">
@@ -19,4 +19,4 @@ function OasisBot() {
   );
 }
 
-export default OasisBot;
+export default MyPage;

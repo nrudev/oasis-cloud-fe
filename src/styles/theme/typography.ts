@@ -8,6 +8,7 @@ interface CustomTypography {
   bodyL: React.CSSProperties;
   bodyDF: React.CSSProperties;
   bodyS: React.CSSProperties;
+  bodyNC: React.CSSProperties;
   "500B": React.CSSProperties;
   "500M": React.CSSProperties;
   "500R": React.CSSProperties;
@@ -46,6 +47,7 @@ declare module "@mui/material/Typography" {
     bodyL: true;
     bodyDF: true;
     bodyS: true;
+    bodyNC: true;
     "500B": true;
     "500M": true;
     "500R": true;
@@ -139,6 +141,14 @@ const typographyOptions: TypographyOptions = {
     lineHeight: "24px",
     fontWeight: 400,
     fontFamily,
+  },
+  bodyNC: {
+    fontFamily: "Pretendard",
+    fontSize: 14,
+    fontWeight: 400,
+    lineHeight: "160%",
+    fontStyle: "Regular",
+    whiteSpace: "pre-line",
   },
   "500B": {
     fontSize: "24px",

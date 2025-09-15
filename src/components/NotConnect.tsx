@@ -1,0 +1,57 @@
+import { useRouter } from "next/router";
+
+import { Box, Button, Typography } from "@mui/material";
+
+interface NotConnectProps {
+  customMessage: string;
+  isConnected: boolean;
+  hasButton?: boolean;
+  msgButton?: string;
+}
+
+export default function NotConnect({
+  customMessage,
+  isConnected,
+  hasButton = true,
+  msgButton = "거래소 연동하기",
+}: NotConnectProps) {
+  const router = useRouter();
+
+  if (isConnected) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="100%" width="100%">
+        <Typography variant="bodyNC">No rows</Typography>
+      </Box>
+    );
+  }
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      height="100%"
+      width="100%"
+      gap={2}
+    >
+      <Typography variant="bodyNC" align="center" whiteSpace="pre-line">
+        {customMessage}
+      </Typography>
+      {hasButton && (
+        <Button
+          variant="outlined"
+          onClick={() => router.push("/api-connection")}
+          sx={{
+            borderColor: "#223CE9",
+            color: "#223CE9",
+            borderRadius: 9999, // For a pill-shaped button
+            padding: "8px 20px",
+          }}
+        >
+          {msgButton}
+        </Button>
+      )}
+    </Box>
+  );
+}
