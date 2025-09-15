@@ -75,14 +75,26 @@ export default function PresetInfoCard({ isConnected }: Props) {
         }
       />
       <CardContent>
-        {isConnected === true && subscribeData?.productName.toLowerCase().includes("premium") ? (
-          <PresetInfo />
-        ) : (
+        {/* 1. 플랜 업그레이드 & API 연동 둘 다 없을 경우 or 플랜 업그레이드만 안 되어 있을 경우 */}
+        {(!isConnected && !subscribeData?.productName.toLowerCase().includes("premium")) ||
+        (isConnected && !subscribeData?.productName.toLowerCase().includes("premium")) ? (
           <NotConnect
             customMessage={`프리셋을 설정하여 더 큰 수익을 창출해보세요\n 프리미엄 플랜으로 업그레이드 하면 설정할 수 있어요`}
             isConnected={false}
             msgButton="플랜 업그레이드"
+            link="/subscribe"
           />
+        ) : !isConnected ? (
+          // 2. API 연동만 안 되어 있을 경우
+          <NotConnect
+            customMessage={`프리셋을 설정하여 더 큰 수익을 창출해보세요\n 거래소 API를 연동하면 설정할 수 있어요`}
+            isConnected={false}
+            msgButton="거래소 API 연동"
+            link="/api-connection"
+          />
+        ) : (
+          // 3. 둘 다 되어 있을 경우
+          <PresetInfo />
         )}
       </CardContent>
       {isConnected && subscribeData?.productName.toLowerCase().includes("premium") && (
