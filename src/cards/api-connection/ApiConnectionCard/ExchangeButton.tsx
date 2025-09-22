@@ -1,11 +1,8 @@
-import { useRouter } from "next/router";
-
 import { ButtonBase, CircularProgress, Stack, Typography } from "@mui/material";
 
 import openScrap from "@/cards/api-connection/ApiConnectionCard/openScrap";
 import ExchangeIcon from "@/components/Icon/ExchangeIcon";
 import { useSmartAccessMutation } from "@/hooks/query/useApiConnection";
-import { useSubscribeQuery } from "@/hooks/query/useSubcribe";
 
 interface ExchangeButtonProps {
   exchange: ExchangeType;
@@ -19,18 +16,10 @@ export default function ExchangeButton({
   isConnected = false,
   disabled = false,
 }: ExchangeButtonProps) {
-  const { push } = useRouter();
-  const {
-    subscribeQuery: { data: subscribeData },
-  } = useSubscribeQuery();
   const { postSmartAccessSessionMutation, postSmartAccessResultMutation } =
     useSmartAccessMutation();
 
   const clickHandler = () => {
-    if (subscribeData?.productName === "Free") {
-      push("/subscribe");
-      return;
-    }
     if (exchange === "binance" || exchange === "lbank") return;
     if (exchange === "okx") {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
