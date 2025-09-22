@@ -4,6 +4,7 @@ import { Box, Button, Typography } from "@mui/material";
 
 interface NotConnectProps {
   customMessage: string;
+  connectedMessage?: string;
   isConnected: boolean;
   hasButton?: boolean;
   msgButton?: string;
@@ -12,6 +13,7 @@ interface NotConnectProps {
 
 export default function NotConnect({
   customMessage,
+  connectedMessage,
   isConnected,
   hasButton = true,
   msgButton = "거래소 연동하기",
@@ -22,7 +24,9 @@ export default function NotConnect({
   if (isConnected) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" height="100%" width="100%">
-        <Typography variant="bodyNC">No rows</Typography>
+        <Typography variant="bodyNC" textAlign="center">
+          {connectedMessage ?? "No rows"}
+        </Typography>
       </Box>
     );
   }

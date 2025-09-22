@@ -21,6 +21,9 @@ function BotTransactionCard({ isConnected }: Props) {
         customMessage={
           "아직 거래소가 연동되지 않았어요\n 거래소를 연동 후 원하는 Bot을 설정해\n 거래소별 자동매매 수익률을 실시간으로 확인해 보세요 "
         }
+        connectedMessage={
+          "아직 거래내역이 없어요.\nBot을 설정해 자동매매가 발생하면\n자동으로 내역이 나와요."
+        }
         isConnected={isConnected}
       />
     );
