@@ -19,6 +19,9 @@ export default function BotTransaction({ isConnected }: Props) {
         customMessage={
           "아직 거래내역이 없어요\n Bot을 설정해 자동매매가 발생하면\n 자동으로 내역이 나와요"
         }
+        connectedMessage={
+          "아직 거래내역이 없어요.\nBot을 설정해 자동매매가 발생하면\n자동으로 내역이 나와요."
+        }
         isConnected={isConnected}
         hasButton={false}
       />
