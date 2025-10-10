@@ -29,34 +29,34 @@ function AllText() {
 
 const tableData: TableType = {
   free: {
-    oasislab: "개발예정",
-    activebot: <Close />,
-    getasset: <Close />,
-    oasisbot: <Close />,
-    exchange: <Close />,
-    "api-connection": <Close />,
-    "new-coin": <Close />,
+    activebot: "1개",
+    getasset: <Check />,
+    oasisbot: <Check />,
+    exchange: <AllText />,
+    "api-connection": <AllText />,
+    preset: <Close />,
     partner: <Check />,
+    oasislab: "개발예정",
   },
   basic: {
-    oasislab: "개발예정",
     activebot: "3개",
     getasset: <Check />,
     oasisbot: <Check />,
     exchange: <UpbitIcon />,
     "api-connection": <UpbitIcon />,
-    "new-coin": <Check />,
+    preset: <Check />,
     partner: <Check />,
+    oasislab: "개발예정",
   },
   premium: {
-    oasislab: "개발예정",
     activebot: "8개",
     getasset: <Check />,
     oasisbot: <Check />,
     exchange: <AllText />,
     "api-connection": <AllText />,
-    "new-coin": <Check />,
+    preset: <Check />,
     partner: <Check />,
+    oasislab: "개발예정",
   },
 };
 
@@ -114,4 +114,4 @@ const subscribeData: {
   },
 };
 
-export { tableData, subscribeData };
+export { subscribeData, tableData };
