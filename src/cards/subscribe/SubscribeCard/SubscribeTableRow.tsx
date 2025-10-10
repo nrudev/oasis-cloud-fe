@@ -7,18 +7,18 @@ export type TableRowType =
   | "oasisbot"
   | "exchange"
   | "api-connection"
-  | "new-coin"
+  | "preset"
   | "partner";
 
 export const tableRowData: TableRowType[] = [
-  "oasislab",
   "activebot",
   "getasset",
   "oasisbot",
   "exchange",
   "api-connection",
-  "new-coin",
+  "preset",
   "partner",
+  "oasislab",
 ];
 
 export default function TableRowMeta({ type }: { type: TableRowType }) {
@@ -31,7 +31,7 @@ export default function TableRowMeta({ type }: { type: TableRowType }) {
             <br />
           </Typography>
           <Typography variant="200R" className="text-font-1">
-            백테스트
+            AI 시장 분석 및 백테스트
           </Typography>
         </TableCell>
       );
@@ -83,11 +83,11 @@ export default function TableRowMeta({ type }: { type: TableRowType }) {
           </Typography>
         </TableCell>
       );
-    case "new-coin":
+    case "preset":
       return (
         <TableCell className="text-center">
           <Typography variant="300B" className="text-font-1">
-            신규 종목 이용
+            프리셋(세팅) 제작
           </Typography>
         </TableCell>
       );
