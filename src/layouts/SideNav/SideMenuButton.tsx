@@ -14,6 +14,7 @@ interface SideMenuButtonProps {
 export default function SideMenuButton({ detail, iconOnly, disabled }: SideMenuButtonProps) {
   const { push } = useRouter();
   const { pathname } = useRouter();
+
   return (
     <ButtonBase
       className={`h-[50px] w-full rounded-xl ${disabled ? "cursor-not-allowed bg-[#E8E8E8]" : "cursor-pointer"}`}
@@ -24,9 +25,15 @@ export default function SideMenuButton({ detail, iconOnly, disabled }: SideMenuB
         direction="row"
         className={`h-full w-full items-center gap-4 overflow-x-hidden ${iconOnly ? "justify-center" : "px-4"}`}
       >
-        <SidenavIcon id={detail.id} isFocus={pathname === detail.path} />
+        <SidenavIcon
+          id={detail.id}
+          isFocus={
+            pathname === detail.path || (pathname === "/preset-dca" && detail.id === "preset")
+          }
+        />
+
         {!iconOnly &&
-          (pathname === detail.path ? (
+          (pathname === detail.path || (pathname === "/preset-dca" && detail.id === "preset") ? (
             <Typography variant="300B" className="text-brand">
               {detail.name}
             </Typography>

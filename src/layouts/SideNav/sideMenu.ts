@@ -4,9 +4,15 @@ interface MenuDetail {
   path: string;
 }
 
+interface SubMenuDetail {
+  id: string;
+  name: string;
+  path: string;
+}
 interface SideMenuType {
   title: string;
   detail?: MenuDetail[];
+  subDetail?: SubMenuDetail[];
 }
 
 const sideMenu: SideMenuType[] = [
@@ -30,7 +36,11 @@ const sideMenu: SideMenuType[] = [
     title: "세팅",
     detail: [
       { id: "api", name: "API 연결", path: "/api-connection" },
-      { id: "preset", name: "프리셋 설정", path: "/preset" },
+      { id: "preset", name: "프리셋 설정", path: "/preset-td_sequiential" },
+    ],
+    subDetail: [
+      { id: "td", name: "TD_Sequiential", path: "/preset-td_sequiential" },
+      { id: "dca", name: "DCA", path: "/preset-dca" },
     ],
   },
   {

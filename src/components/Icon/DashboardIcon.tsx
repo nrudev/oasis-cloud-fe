@@ -25,6 +25,7 @@ const iconSrc = {
   "profit-rate": "/icons/dashboard/profit-rate.png",
   "winning-rate": "/icons/dashboard/winning-rate.png",
   "copied-presets": "/icons/dashboard/copied-presets.png",
+  "dca-setting": "/icons/dashboard/dca.png",
 };
 
 export default function DashboardIcon({ id }: DashboardIconProps) {
