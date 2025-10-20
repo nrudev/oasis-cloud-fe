@@ -5,8 +5,9 @@ import { useAtom } from "jotai";
 
 import sideNavAtom from "@/datas/sideNav";
 import useComponentSize from "@/hooks/useComponentSize";
-import SideNav from "@/layouts/SideNav";
 import TopNav from "@/layouts/TopNav/index";
+
+import SideNav from "./SideNav";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { size, componentRef } = useComponentSize();

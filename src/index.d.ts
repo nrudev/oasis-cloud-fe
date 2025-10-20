@@ -32,7 +32,8 @@ type DashboardIdType =
   | "bot-transaction"
   | "profit-rate"
   | "winning-rate"
-  | "copied-presets";
+  | "copied-presets"
+  | "dca-setting";
 
 type SocialType = "linkedin" | "facebook" | "naver" | "kakao";
 

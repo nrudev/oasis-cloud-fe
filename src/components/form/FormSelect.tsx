@@ -9,7 +9,7 @@ interface FormSelectProps<T> {
 }
 
 function FormSelect<T>(props: FormSelectProps<T> & SelectProps<T>) {
-  const { id, label, items, className, setValue } = props;
+  const { id, label, items, className, setValue, ...rest } = props;
   return (
     <Stack className={`w-full ${className}`}>
       {label && (
@@ -21,7 +21,7 @@ function FormSelect<T>(props: FormSelectProps<T> & SelectProps<T>) {
       )}
       <Select
         variant="standard"
-        {...props}
+        {...rest}
         fullWidth
         classes={{
           root: "before:border-none",
