@@ -8,7 +8,7 @@ export default function ExchangeSelectDescription() {
   return (
     <Stack className="event-section w-full items-center gap-4 rounded-2xl bg-neutral-200 px-4 py-6">
       <Stack direction="row" className="gap-2">
-        <Icon src="/icons/control/info.png" size={16} />
+        <Icon src="/icons/control/info.png" width={16} height={16} />
         <Typography variant="300M" className="text-font-1">
           오아시스 특별혜택 이벤트
         </Typography>

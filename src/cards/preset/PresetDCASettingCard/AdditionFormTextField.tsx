@@ -78,7 +78,7 @@ function AdditionFormTextField<T>(props: FormTextFieldProps<T> & Omit<InputBaseP
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton onClick={() => minusButtonClick(index)}>
-                    <Icon src="/icons/control/close-dark.png" size={20} />
+                    <Icon src="/icons/control/close-dark.png" width={20} height={20} />
                   </IconButton>
                 </InputAdornment>
               }

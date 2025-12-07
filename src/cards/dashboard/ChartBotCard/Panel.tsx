@@ -55,7 +55,7 @@ export default function Panel({ setMenuId, menuId, chart }: Props) {
         />
         <Stack direction="row" spacing={2}>
           <Stack justifyContent="center" alignItems="center">
-            <Icon src="/icons/arrow/down-circle.png" size={20} />
+            <Icon src="/icons/arrow/down-circle.png" width={20} height={20} />
           </Stack>
         </Stack>
       </Stack>

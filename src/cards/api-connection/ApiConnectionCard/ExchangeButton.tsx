@@ -78,7 +78,7 @@ export default function ExchangeButton({
         {isProcessing ? (
           <CircularProgress size={42} className="mb-2" />
         ) : (
-          <ExchangeIcon exchange={exchange} size={60} />
+          <ExchangeIcon exchange={exchange} width={60} height={60} />
         )}
         {disabled ? (
           <Typography variant="300R" className="text-sub-1">

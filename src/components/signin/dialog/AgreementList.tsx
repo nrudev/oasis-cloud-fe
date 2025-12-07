@@ -23,7 +23,7 @@ function CheckItem({ title, checked = false, onClick, href }: CheckItemProps) {
       </Stack>
       {href && (
         <IconButton href={href} target="_blank">
-          <Icon src="/icons/arrow/right.png" size={28} />
+          <Icon src="/icons/arrow/right.png" width={28} height={28} />
         </IconButton>
       )}
     </Stack>

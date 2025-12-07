@@ -10,7 +10,7 @@ import Logo from "@/components/Logo";
 function Tag({ title, id }: { title: string; id: string }) {
   return (
     <Stack direction="row" className="gap-1">
-      <Icon src={`/apiconnection/${id}.png`} size={16} />
+      <Icon src={`/apiconnection/${id}.png`} width={16} height={16} />
       <Typography variant="100B" className="text-white">
         {title}
       </Typography>

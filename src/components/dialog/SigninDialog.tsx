@@ -18,7 +18,7 @@ export default function SigninDialog({ onClose, children }: SigninDialogProps) {
         }}
       >
         <IconButton className="absolute right-4 top-4" onClick={onClose}>
-          <Icon src="/icons/control/close-dark.png" size={32} />
+          <Icon src="/icons/control/close-dark.png" width={32} height={32} />
         </IconButton>
         {children}
       </Paper>

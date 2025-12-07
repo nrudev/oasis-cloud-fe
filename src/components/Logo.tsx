@@ -33,7 +33,7 @@ const colorStyle = {
 export default function Logo({ color, size, logoOnly }: LogoProps) {
   return (
     <Stack className="items-center" direction="row">
-      <Icon src={iconSrc[color]} size={iconSize[size]} />
+      <Icon src={iconSrc[color]} width={iconSize[size]} height={iconSize[size]} />
       {!logoOnly && (
         <Typography variant={textSize[size]} className={colorStyle[color]}>
           OASIS

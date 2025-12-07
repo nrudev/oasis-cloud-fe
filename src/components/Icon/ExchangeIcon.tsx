@@ -19,9 +19,16 @@ const exchangeToIcon = (exchange: ExchangeType | undefined): string => {
 
 interface ExchangeIconProps {
   exchange: ExchangeType | undefined;
-  size?: number;
+  width?: number;
+  height?: number;
 }
 
-export default function ExchangeIcon({ exchange, size = 24 }: ExchangeIconProps) {
-  return <Icon src={exchangeToIcon(exchange)} size={size} />;
+export default function ExchangeIcon({ exchange, width = 24, height = 24 }: ExchangeIconProps) {
+  return (
+    <Icon
+      src={exchangeToIcon(exchange)}
+      width={exchange === "bithumb" ? 40 : width}
+      height={exchange === "bithumb" ? 60 : height}
+    />
+  );
 }

@@ -5,20 +5,27 @@ import { Icon as MuiIcon } from "@mui/material";
 interface IconProps {
   src: string;
   alt?: string;
-  size?: number;
+  width?: number;
+  height?: number;
   className?: string;
 }
 
-export default function Icon({ src, alt = "icon", size = 30, className = "" }: IconProps) {
+export default function Icon({
+  src,
+  alt = "icon",
+  width = 30,
+  height = 30,
+  className = "",
+}: IconProps) {
   return (
     <MuiIcon
       className={`flex items-center justify-center ${className}`}
       sx={{
-        width: size,
-        height: size,
+        width: width,
+        height: height,
       }}
     >
-      <Image src={src} alt={alt} width={size} height={size} />
+      <Image src={src} alt={alt} width={width} height={height} />
     </MuiIcon>
   );
 }

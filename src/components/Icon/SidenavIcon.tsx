@@ -31,7 +31,7 @@ const iconSrcUnfocused = {
 
 export default function SidenavIcon({ id, isFocus }: SidenavIconProps) {
   if (isFocus) {
-    return <Icon src={iconSrcFocused[id]} size={24} />;
+    return <Icon src={iconSrcFocused[id]} width={24} height={24} />;
   }
-  return <Icon src={iconSrcUnfocused[id]} size={24} />;
+  return <Icon src={iconSrcUnfocused[id]} width={24} height={24} />;
 }

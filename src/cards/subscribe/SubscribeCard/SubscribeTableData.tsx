@@ -13,7 +13,7 @@ interface TableType {
 function UpbitIcon() {
   return (
     <Stack direction="row" gap={1} className="flex items-center justify-center">
-      <Icon src="/icons/exchange/upbit.png" size={25} />
+      <Icon src="/icons/exchange/upbit.png" width={25} height={25} />
       <div className="flex items-center justify-center">업비트만가능</div>
     </Stack>
   );

@@ -15,7 +15,7 @@ export default function Description({
     <Stack className="ml-5 mt-5 h-[110px] justify-between gap-2 rounded-2xl bg-neutral-200 p-6">
       <Stack className="items-center justify-between" direction="row">
         <Stack className="shrink-0 gap-2" direction="row">
-          <Icon src="/icons/control/info.png" alt="info" size={16} />
+          <Icon src="/icons/control/info.png" alt="info" width={16} height={16} />
           <Typography variant="300M" className="text-font-1">
             {title}
           </Typography>

@@ -60,7 +60,7 @@ function GoogleSigninButton({ onSuccess, eventLabel }: GAButtonProps) {
       }}
       onClick={() => handleClick()}
     >
-      <Icon src="/google.png" size={20} />
+      <Icon src="/google.png" width={20} height={20} />
       <Typography variant="bodyS">Google로 계속하기</Typography>
     </ButtonBase>
   );

@@ -11,7 +11,7 @@ export default function Warning() {
           alignItems: "center",
         }}
       >
-        <Icon src="/icons/oasisbot/warning.png" size={150} />
+        <Icon src="/icons/oasisbot/warning.png" width={150} height={150} />
       </Stack>
       <Stack
         sx={{

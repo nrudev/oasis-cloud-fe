@@ -219,7 +219,13 @@ function ConnectOasisBotRunCard() {
           <Stack className="w-full">
             <InputLabel htmlFor="leverage">
               <div className="flex flex-row">
-                <Icon src="/icons/control/info.png" alt="info" size={12} className="mr-1" />
+                <Icon
+                  src="/icons/control/info.png"
+                  alt="info"
+                  width={12}
+                  height={12}
+                  className="mr-1"
+                />
                 <Typography
                   variant="100R"
                   className="text-neutral-600 underline hover:cursor-pointer"

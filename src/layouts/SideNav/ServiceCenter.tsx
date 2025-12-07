@@ -22,7 +22,7 @@ export default function ServiceCenter({ iconOnly }: { iconOnly?: boolean }) {
         className={`absolute z-[10] h-full w-full ${iconOnly ? "items-center justify-center" : "justify-between p-4"}`}
       >
         <Stack className="h-[35px] w-[35px] items-center justify-center rounded-xl bg-white">
-          <Icon src="/icons/control/info.png" size={18} />
+          <Icon src="/icons/control/info.png" width={18} height={18} />
         </Stack>
         {!iconOnly && (
           <Stack className="gap-3 overflow-x-hidden">

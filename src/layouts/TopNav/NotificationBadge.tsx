@@ -16,7 +16,7 @@ export default function NotificationBadge({ onClick }: NotificationBadgeProps) {
       onClick={onClick}
     >
       <Stack direction="row" className="items-center gap-1">
-        <Icon src="/icons/basic/notification.png" size={24} />
+        <Icon src="/icons/basic/notification.png" width={24} height={24} />
         <Typography fontWeight={700} fontSize="14px" lineHeight="16px" className="text-white">
           24
         </Typography>

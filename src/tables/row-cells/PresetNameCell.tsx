@@ -20,7 +20,7 @@ function IconButtonFun() {
   const { push } = useRouter();
   return (
     <IconButton sx={{ width: "24px", height: "24px" }} onClick={() => push("/preset")}>
-      <Icon src="/icons/basic/setting.png" size={24} />
+      <Icon src="/icons/basic/setting.png" width={24} height={24} />
     </IconButton>
   );
 }

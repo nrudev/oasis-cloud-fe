@@ -6,12 +6,8 @@ function BithumbConnectionGuideDialog() {
   const { openDialog } = useDialogGlobal();
 
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/pdf/빗썸 API KEY 발급 가이드.pdf";
-    link.download = "빗썸 API KEY 발급 가이드.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const pdfUrl = "/pdf/bithumb_api_key_guide.pdf";
+    window.open(pdfUrl, "_blank", "noopener,noreferrer");
   };
 
   return (

@@ -23,9 +23,9 @@ function CustomAccordion({ title, contents }: Props) {
         onClick={buttonClick}
       >
         {flag ? (
-          <Icon src="/icons/arrow/right.png" size={28} />
+          <Icon src="/icons/arrow/right.png" width={28} height={28} />
         ) : (
-          <Icon src="/icons/arrow/down.png" size={28} />
+          <Icon src="/icons/arrow/down.png" width={28} height={28} />
         )}
         <Typography
           sx={{
