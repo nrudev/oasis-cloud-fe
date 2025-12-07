@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { KeyboardArrowDown } from "@mui/icons-material";
 
@@ -14,6 +14,7 @@ function useMarketSelect() {
         options={[
           { value: "upbit", label: "업비트" },
           { value: "okx", label: "OKX" },
+          { value: "bithumb", label: "빗썸" },
         ]}
         state={market}
         setState={setMarket}

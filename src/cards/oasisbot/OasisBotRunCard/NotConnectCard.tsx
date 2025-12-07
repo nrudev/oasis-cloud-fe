@@ -15,7 +15,7 @@ export default function NotConnectCard() {
       <CardHeader
         id="bot-start"
         title="오아시스 BOT 실행"
-        subtitle={`주문가능 금액\n${exchange === "upbit" ? "￦" : "$"} 0`}
+        subtitle={`주문가능 금액\n${exchange === "bithumb" ? "￦" : "$"} 0`}
         action={<ExchangeChip />}
       />
       <CardContent sx={{ paddingTop: "0", height: "415px", overflow: "auto" }}>

@@ -1,10 +1,9 @@
 import { ButtonBase, CircularProgress, Stack, Typography } from "@mui/material";
 
-import openScrap from "@/cards/api-connection/ApiConnectionCard/openScrap";
 import ExchangeIcon from "@/components/Icon/ExchangeIcon";
+import BithumbConnectionDialog from "@/components/dialog/BithumbConnectionDialog";
 import BithumbConnectionGuideDialog from "@/components/dialog/BithumbConnectionGuideDialog";
 import useDialogGlobal from "@/components/dialog/useDialogGlobal";
-import { useSmartAccessMutation } from "@/hooks/query/useApiConnection";
 
 interface ExchangeButtonProps {
   exchange: ExchangeType;
@@ -20,8 +19,8 @@ export default function ExchangeButton({
 }: ExchangeButtonProps) {
   const { openDialog } = useDialogGlobal();
 
-  const { postSmartAccessSessionMutation, postSmartAccessResultMutation } =
-    useSmartAccessMutation();
+  // const { postSmartAccessSessionMutation, postSmartAccessResultMutation } =
+  //   useSmartAccessMutation();
 
   const clickHandler = () => {
     if (exchange === "binance" || exchange === "lbank" || exchange === "upbit") return;
@@ -43,26 +42,32 @@ export default function ExchangeButton({
         console.error("sdk has not been loaded");
       }
     } else if (exchange === "bithumb") {
-      // TODO
-      openDialog(<BithumbConnectionGuideDialog />);
-    } else if (exchange === "upbit") {
-      postSmartAccessSessionMutation.mutate(
-        {
-          body: null,
-          params: { exchange },
-        },
-        {
-          onSuccess: u => {
-            openScrap(u, () => {
-              postSmartAccessResultMutation.mutate({
-                body: { uid: u },
-                params: { exchange },
-              });
-            });
-          },
-        },
+      openDialog(
+        !isConnected ? (
+          <BithumbConnectionGuideDialog />
+        ) : (
+          <BithumbConnectionDialog isConnected={isConnected} />
+        ),
       );
     }
+    // else if (exchange === "upbit") {
+    //   postSmartAccessSessionMutation.mutate(
+    //     {
+    //       body: null,
+    //       params: { exchange },
+    //     },
+    //     {
+    //       onSuccess: u => {
+    //         openScrap(u, () => {
+    //           postSmartAccessResultMutation.mutate({
+    //             body: { uid: u },
+    //             params: { exchange },
+    //           });
+    //         });
+    //       },
+    //     },
+    //   );
+    // }
   };
   return (
     <ButtonBase
@@ -70,7 +75,7 @@ export default function ExchangeButton({
       sx={{
         backgroundColor: disabled ? "#e3e3e3" : isConnected ? "#EEF0FE" : "white",
       }}
-      disabled={isConnected || disabled || isProcessing}
+      disabled={(isConnected || disabled || isProcessing) && !exchange.includes("bithumb")}
       data-exchange={exchange}
       onClick={clickHandler}
     >
@@ -78,7 +83,7 @@ export default function ExchangeButton({
         {isProcessing ? (
           <CircularProgress size={42} className="mb-2" />
         ) : (
-          <ExchangeIcon exchange={exchange} width={60} height={60} />
+          <ExchangeIcon exchange={exchange} width={exchange === "bithumb" ? 40 : 60} height={60} />
         )}
         {disabled ? (
           <Typography variant="300R" className="text-sub-1">

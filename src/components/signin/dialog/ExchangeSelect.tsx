@@ -20,7 +20,7 @@ export default function ExchangeSelect({ onClick }: ExchangeSelectProps) {
       </Stack>
       <Stack className="gap-4 px-4">
         <ExchangeSelectButton type="okx" onClick={onClick} />
-        <ExchangeSelectButton type="upbit" onClick={onClick} />
+        <ExchangeSelectButton type="bithumb" onClick={onClick} />
         <ExchangeSelectDescription />
       </Stack>
     </Stack>

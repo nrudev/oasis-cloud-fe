@@ -40,13 +40,13 @@ export default function PresetSetting() {
           preset && setPreset({ ...preset, indicatorName: v as string });
         }}
       />
-      {exchange === "upbit" ? (
+      {exchange === "bithumb" ? (
         <FormSelect
           id="position"
           className="entry-position"
           label="진입 포지션"
           value="not-supported"
-          items={[{ label: "upbit에서는 지원하지 않습니다.", value: "not-supported" }]}
+          items={[{ label: "bithumb에서는 지원하지 않습니다.", value: "not-supported" }]}
           disabled
         />
       ) : (

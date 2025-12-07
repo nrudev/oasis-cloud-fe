@@ -12,7 +12,7 @@ function TransactionColumnsPriceCell(
   return (
     <div>
       <div className="text-[16px] font-bold leading-[18px]">
-        {exchange === "upbit" ? "￦" : "$"}
+        {exchange === "bithumb" ? "￦" : "$"}
         {value?.startBalance.toLocaleString("ko-kr")}
       </div>
       <div className="mt-2 whitespace-normal">{value?.presetName}</div>

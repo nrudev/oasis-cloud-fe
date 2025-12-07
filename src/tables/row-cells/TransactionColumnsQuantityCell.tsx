@@ -12,7 +12,7 @@ function TransactionColumnsQuantityCell(
   return (
     <div>
       <div className="text-[16px] font-bold leading-[18px]">
-        {exchange === "upbit" ? "￦" : "$"}
+        {exchange === "bithumb" ? "￦" : "$"}
         {value?.totalPrice.toLocaleString("ko-kr")}
       </div>
 

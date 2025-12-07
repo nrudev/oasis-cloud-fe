@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Stack } from "@mui/material";
 import { useAtomValue } from "jotai";
 
@@ -20,7 +18,7 @@ function OasisBotTotalCardList() {
         subtitle="7일 기준"
         color="#223CE9"
         value={botDataQuery.data?.totalTradePrice.value ?? 0}
-        unit={exchange === "upbit" ? "원" : "$"}
+        unit={exchange === "bithumb" ? "원" : "$"}
         difference={botDataQuery.data?.totalTradePrice.difference}
         arrow
       />
@@ -68,7 +66,7 @@ function OasisBotTotalCardList() {
         title="실시간 운용자산"
         subtitle={`${exchangeToKorean(exchange)} 거래소 기준`}
         color="#2BB7F5"
-        value={(exchange === "upbit" ? "₩" : "$") + (botDataQuery.data?.totalTradeBalance ?? "")}
+        value={(exchange === "bithumb" ? "₩" : "$") + (botDataQuery.data?.totalTradeBalance ?? "")}
         unit=""
         mention="OASIS 님의 운용자산"
       />

@@ -7,7 +7,7 @@ import AdvertisementIndex from "@/cards/dashboard/AdvertisementCard/Advertisemen
 import AdvertisementInfo from "@/cards/dashboard/AdvertisementCard/AdvertisementInfo";
 
 export default function AdvertisementCard() {
-  const MAX_INDEX = 3;
+  const MAX_INDEX = 2;
   const [currentIndex, setCurrentIndex] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const startSlider = () => {
@@ -19,7 +19,7 @@ export default function AdvertisementCard() {
   useEffect(() => {
     if (ref.current) {
       const { width: clientWidth } = ref.current.getBoundingClientRect();
-      ref.current.style.marginLeft = `-${(Number(clientWidth) / 3) * currentIndex}px`;
+      ref.current.style.marginLeft = `-${(Number(clientWidth) / 2) * currentIndex}px`;
     }
   }, [currentIndex]);
 
@@ -40,14 +40,14 @@ export default function AdvertisementCard() {
           onClick={() => window.open("https://okx.com/join/OFFICIALOASIS")}
         />
 
-        <AdvertisementInfo
+        {/* <AdvertisementInfo
           semiTitle="Smart Access"
           title={`업비트 원클릭\n계정 연동`}
           description={`KYC 2차 인증 완료 후 원클릭 스마트\n엑세스 계정이 연결이 가능합니다`}
           bgSrc="/advertisement/event2.png"
           btn="KYC 2차 인증 하기"
           onClick={() => console.log("자세히보기")}
-        />
+        /> */}
 
         <AdvertisementInfo
           semiTitle="Preset Setting"

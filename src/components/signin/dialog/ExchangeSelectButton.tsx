@@ -7,13 +7,6 @@ interface ExchangeSelectButtonProps {
   onClick?: (type: ExchangeType) => void;
 }
 
-const title = {
-  okx: "OKX",
-  upbit: "UPBIT",
-  binance: "BINANCE",
-  lbank: "LBANK",
-};
-
 function ExchangeSelectButton({ type, onClick }: ExchangeSelectButtonProps) {
   return (
     <ButtonBase
@@ -24,7 +17,7 @@ function ExchangeSelectButton({ type, onClick }: ExchangeSelectButtonProps) {
       onClick={() => onClick && onClick(type)}
     >
       <ExchangeIcon exchange={type} />
-      <Typography variant="bodyS">{title[type]}</Typography>
+      <Typography variant="bodyS">{type.toUpperCase()}</Typography>
     </ButtonBase>
   );
 }

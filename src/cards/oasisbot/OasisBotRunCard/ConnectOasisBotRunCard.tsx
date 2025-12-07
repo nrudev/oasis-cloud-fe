@@ -58,11 +58,13 @@ function ConnectOasisBotRunCard() {
   ];
 
   const runOasisBot = () => {
-    if (exchange === "upbit" ? Number(startBalance) < 5000 : Number(startBalance) < 100) {
+    if (exchange === "bithumb" ? Number(startBalance) < 5000 : Number(startBalance) < 100) {
       openDialog(
         <InfoDialog
           title="거래금액"
-          description={[`거래금액은 ${exchange === "upbit" ? "￦5,000" : "$100"} 부터 가능합니다.`]}
+          description={[
+            `거래금액은 ${exchange === "bithumb" ? "₩5,000" : "$100"} 부터 가능합니다.`,
+          ]}
           confirmFunc={closeDialog}
         />,
       );
@@ -161,7 +163,7 @@ function ConnectOasisBotRunCard() {
       <CardHeader
         id="bot-start"
         title="오아시스 BOT 실행"
-        subtitle={`주문가능 금액\n${exchange === "upbit" ? "￦" : "$"}${balanceQuery.data?.availableBalance?.toLocaleString() ?? 0}`}
+        subtitle={`주문가능 금액\n${exchange === "bithumb" ? "₩" : "$"}${balanceQuery.data?.availableBalance?.toLocaleString() ?? 0}`}
         action={<ExchangeChip />}
       />
       <CardContent>
@@ -169,12 +171,14 @@ function ConnectOasisBotRunCard() {
           <FormTextField
             id="transactionAmount"
             className="trade-amount"
-            label={`거래금액을 입력해 주세요 (최소 ${exchange === "upbit" ? "₩5,000" : "$100"})`}
+            label={`거래금액을 입력해 주세요 (최소 ${exchange === "bithumb" ? "₩5,000" : "$100"})`}
             type="number"
             value={startBalance}
             setValue={setStartBalance}
             startAdornment={
-              <InputAdornment position="start">{exchange === "upbit" ? "￦" : "$"}</InputAdornment>
+              <InputAdornment position="start">
+                {exchange === "bithumb" ? "￦" : "$"}
+              </InputAdornment>
             }
             inputLabelProps={{
               className: "text-brand opacity-100",
@@ -227,7 +231,7 @@ function ConnectOasisBotRunCard() {
               </div>
             </InputLabel>
             <InputBase
-              placeholder={`${exchange === "upbit" ? "업비트 거래소는 레버리지 설정 불가" : "레버리지 고정값"}`}
+              placeholder={`${exchange === "bithumb" ? "빗썸 거래소는 레버리지 설정 불가" : "레버리지 고정값"}`}
               fullWidth
               classes={{
                 input:

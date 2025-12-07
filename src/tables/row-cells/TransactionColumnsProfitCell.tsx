@@ -13,7 +13,7 @@ function TransactionColumnsProfitCell(
       <div
         className={`whitespace-normal ${value?.profitLoss && value.profitLoss > 0 ? "text-sub-3" : ""}`}
       >
-        {value?.profitLoss ? (exchange === "upbit" ? "￦" : "$") : ""}
+        {value?.profitLoss ? (exchange === "bithumb" ? "￦" : "$") : ""}
         <span className="text-ellipsis font-bold">
           {value?.profitLoss.toLocaleString("ko-kr") ?? "-"}
         </span>

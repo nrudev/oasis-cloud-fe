@@ -37,7 +37,7 @@ export default function AssetStatusInfo({ tradeStyleData }: AssetStatusInfoProps
         <Typography variant="h4" className="w-[120%] text-white">
           {numberToCurrency(
             numberSlice(tradeStyleData?.accountBalance, 2),
-            exchange === "upbit" ? "₩" : "$",
+            exchange === "bithumb" ? "₩" : "$",
           )}
         </Typography>
       </Stack>

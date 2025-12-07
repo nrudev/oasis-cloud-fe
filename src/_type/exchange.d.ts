@@ -1,4 +1,4 @@
-type ExchangeType = "okx" | "upbit" | "binance" | "lbank" | "bithumb";
+type ExchangeType = "okx" | "binance" | "lbank" | "bithumb" | "upbit";
 
 type ExchangeParams = {
   exchange: ExchangeType;

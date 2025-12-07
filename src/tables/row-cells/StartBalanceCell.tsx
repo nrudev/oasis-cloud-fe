@@ -1,5 +1,3 @@
-import React from "react";
-
 import { GridRenderCellParams, GridValidRowModel } from "@mui/x-data-grid";
 import { useAtomValue } from "jotai";
 
@@ -12,7 +10,7 @@ function StartBalanceCell(
   const { value } = params;
   return (
     <div className="whitespace-normal">
-      {exchange === "upbit" ? "₩" : "$"} {value}
+      {exchange === "bithumb" ? "₩" : "$"} {value}
     </div>
   );
 }

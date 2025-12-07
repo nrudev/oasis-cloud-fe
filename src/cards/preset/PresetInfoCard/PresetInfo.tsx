@@ -19,12 +19,12 @@ export default function PresetInfo() {
   return (
     <Stack className="w-full items-center gap-4">
       <FormTextField id="name" label="설정 보조지표" value={preset?.indicatorName ?? ""} readOnly />
-      {exchange === "upbit" ? (
+      {exchange === "bithumb" ? (
         <FormTextField
           id="indicator"
           label="진입 포지션"
           disabled
-          value="upbit에서는 지원하지 않습니다."
+          value="bithumb에서는 지원하지 않습니다."
         />
       ) : (
         <FormTextField id="indicator" label="진입 포지션" value={preset?.position ?? ""} readOnly />

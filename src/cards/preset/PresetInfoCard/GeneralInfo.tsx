@@ -39,7 +39,7 @@ export default function GeneralInfo({ type }: GeneralInfoProps) {
             : type === "balance"
               ? numberToCurrency(
                   numberSlice(tradeStyleData?.accountBalance, 2),
-                  exchange === "upbit" ? "₩" : "$",
+                  exchange === "bithumb" ? "₩" : "$",
                 ) || "0"
               : subscribeData?.productName || "Free"}
         </Typography>

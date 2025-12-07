@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const exchange = localStorage.getItem("exchange");
     if (exchange) {
       if (exchange === "okx") setExchange("okx");
-      else if (exchange === "upbit") setExchange("upbit");
+      else if (exchange === "bithumb") setExchange("bithumb");
       else localStorage.removeItem("exchange");
     }
   }, []);

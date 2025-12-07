@@ -25,6 +25,8 @@ export default function PanelDescription({
         return "/icons/exchange/iconUPBIT.png";
       case "okx":
         return "/icons/exchange/iconOKX.png";
+      case "bithumb":
+        return "/icons/exchange/iconBITHUMB.png";
       default:
         return "";
     }
@@ -33,7 +35,12 @@ export default function PanelDescription({
     <Stack direction="row" className="w-full items-center justify-between">
       <Stack direction="row" spacing={1}>
         {/* <DashboardIcon id="bar-graph" /> */}
-        <Image src={changeIcon(exchange)} alt="btc" width={45} height={45} />
+        <Image
+          src={changeIcon(exchange)}
+          alt="btc"
+          width={exchange == "bithumb" ? 35 : 45}
+          height={45}
+        />
 
         <Stack className="gap-2">
           <Typography variant="300B" className="text-[#FFFFFF]">
@@ -53,7 +60,7 @@ export default function PanelDescription({
           lineHeight="22px"
           className="text-white"
         >
-          {exchange === "upbit" ? "₩" : "$"} {totalProfit}
+          {exchange === "bithumb" ? "₩" : "$"} {totalProfit}
         </Typography>
         <ProfitChip rate={totalProfitRate} />
       </Stack>

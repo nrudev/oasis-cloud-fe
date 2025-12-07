@@ -56,7 +56,7 @@ export default function CircleChart({ coinRatioList, focus }: CircleChartProps) 
         percent={coinRatioList?.[focusIndex]?.ratio}
         amount={numberToCurrency(
           numberSlice(coinRatioList?.[focusIndex]?.price, 2),
-          exchange === "upbit" ? "₩" : "$",
+          exchange === "bithumb" ? "₩" : "$",
         )}
       />
     </Box>

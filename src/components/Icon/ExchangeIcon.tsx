@@ -24,11 +24,5 @@ interface ExchangeIconProps {
 }
 
 export default function ExchangeIcon({ exchange, width = 24, height = 24 }: ExchangeIconProps) {
-  return (
-    <Icon
-      src={exchangeToIcon(exchange)}
-      width={exchange === "bithumb" ? 40 : width}
-      height={exchange === "bithumb" ? 60 : height}
-    />
-  );
+  return <Icon src={exchangeToIcon(exchange)} width={width} height={height} />;
 }

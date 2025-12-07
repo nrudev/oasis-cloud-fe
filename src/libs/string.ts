@@ -25,6 +25,8 @@ const exchangeToKorean = (market: ExchangeType | undefined) => {
       return "업비트";
     case "okx":
       return "OKX";
+    case "bithumb":
+      return "빗썸";
     default:
       return "";
   }
@@ -60,12 +62,12 @@ const truncateDecimalPoints = (number: number | string, decimalPoints: number) =
 };
 
 export {
-  numberToCurrency,
-  dateToKorean,
-  datetimeToKorean,
-  exchangeToKorean,
   createRandomString,
+  datetimeToKorean,
+  dateToKorean,
+  exchangeToKorean,
   numberSlice,
+  numberToCurrency,
   sliceOnlyProductName,
   truncateDecimalPoints,
 };

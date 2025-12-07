@@ -53,7 +53,7 @@ export default function DetailSettingPanel({ value, index }: Props) {
   const [exchange] = useAtom(exchangeAtom);
   const [selectedPostion, setSelectedPosition] = useState(postionList[0].value);
   const [selectedLeverage, setSelectedLeverage] = useState(
-    exchange === "upbit" ? noLeverage[0].value : leverageList[0].value,
+    exchange === "bithumb" ? noLeverage[0].value : leverageList[0].value,
   );
   const [selectedMarginType, setSelectedMarginType] = useState(marginTypeList[0].value);
   const [selectedTotalBalance, setSelectedTotalBalance] = useState(totalBalanceList[0].value);
@@ -94,11 +94,11 @@ export default function DetailSettingPanel({ value, index }: Props) {
           <FormSelect
             id="leverage"
             label="레버리지"
-            items={exchange === "upbit" ? noLeverage : leverageList}
+            items={exchange === "bithumb" ? noLeverage : leverageList}
             value={selectedLeverage}
             setValue={setSelectedLeverage}
             variant="standard"
-            disabled={exchange === "upbit"}
+            disabled={exchange === "bithumb"}
           />
           <FormSelect
             id="marginType"
