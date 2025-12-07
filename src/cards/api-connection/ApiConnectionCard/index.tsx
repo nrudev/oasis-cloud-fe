@@ -21,9 +21,9 @@ export default function ApiConnectionCard({ processing, error, success }: Props)
       <Stack className="h-full w-full items-center justify-between gap-8 px-4 py-4 md:px-8 md:py-8 xl:px-16">
         <Box className="grid w-fit grid-cols-2 gap-4">
           <ExchangeButton
-            exchange="upbit"
-            isConnected={userExchanges?.includes("upbit")}
-            isProcessing={processing === "upbit"}
+            exchange="bithumb"
+            isConnected={userExchanges?.includes("bithumb")}
+            isProcessing={processing === "bithumb"}
           />
           <ExchangeButton
             exchange="okx"

@@ -10,6 +10,8 @@ const exchangeToIcon = (exchange: ExchangeType | undefined): string => {
       return "/icons/exchange/binance.png";
     case "lbank":
       return "/icons/exchange/lbank.png";
+    case "bithumb":
+      return "/icons/exchange/bithumb.png";
     default:
       return "";
   }

@@ -2,6 +2,8 @@ import { ButtonBase, CircularProgress, Stack, Typography } from "@mui/material";
 
 import openScrap from "@/cards/api-connection/ApiConnectionCard/openScrap";
 import ExchangeIcon from "@/components/Icon/ExchangeIcon";
+import InfoDialog2 from "@/components/dialog/base/InfoDialog2";
+import useDialogGlobal from "@/components/dialog/useDialogGlobal";
 import { useSmartAccessMutation } from "@/hooks/query/useApiConnection";
 
 interface ExchangeButtonProps {
@@ -16,11 +18,22 @@ export default function ExchangeButton({
   isConnected = false,
   disabled = false,
 }: ExchangeButtonProps) {
+  const { openDialog } = useDialogGlobal();
+
   const { postSmartAccessSessionMutation, postSmartAccessResultMutation } =
     useSmartAccessMutation();
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/pdf/빗썸 API KEY 발급 가이드.pdf";
+    link.download = "빗썸 API KEY 발급 가이드.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const clickHandler = () => {
-    if (exchange === "binance" || exchange === "lbank") return;
+    if (exchange === "binance" || exchange === "lbank" || exchange === "upbit") return;
     if (exchange === "okx") {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { OKEXOAuthSDK } = window as unknown as any;
@@ -38,6 +51,23 @@ export default function ExchangeButton({
       } else {
         console.error("sdk has not been loaded");
       }
+    } else if (exchange === "bithumb") {
+      // TODO
+      openDialog(
+        <InfoDialog2
+          dialogTitle="빗썸 연결"
+          dialogDescription={[
+            "해당 거래소를 연결하려면",
+            "거래소 회원가입이 필요해요",
+            "KYC 2차 인증 절차까지 완료한 후 연결해주세요.",
+          ]}
+          button1Title="API KEY 발급 가이드"
+          // button1Href="/pdf/bithumb_connection_guide.pdf"
+          button2Title="빗썸 연결"
+          handleButton1Click={handleDownload}
+          handleButton2Click={() => {}}
+        />,
+      );
     } else if (exchange === "upbit") {
       postSmartAccessSessionMutation.mutate(
         {
