@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 
-import {
-  CardContent,
-  InputAdornment,
-  InputBase,
-  InputLabel,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { CardContent, InputAdornment, Stack } from "@mui/material";
 import { useIsMutating } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 
@@ -15,10 +8,7 @@ import Card from "@/cards/Card";
 import CardButton from "@/cards/CardButton";
 import CardFooter from "@/cards/CardFooter";
 import CardHeader from "@/cards/CardHeader";
-import Icon from "@/components/Icon";
 import ExchangeChip from "@/components/chip/ExchangeChip";
-import LeverageNoticeDialog from "@/components/dialog/LeverageNoticeDialog";
-import useDialogGlobal from "@/components/dialog/useDialogGlobal";
 import FormTextField from "@/components/form/FormTextField";
 import exchangeAtom from "@/datas/exchange";
 import { selectedBotRowAtom } from "@/datas/oasisbotTransaction";
@@ -40,7 +30,7 @@ function OasisBotSelectCard() {
     botDetailQuery: { data },
   } = useBotDetailQuery(selectedRow[0]);
   const { stopBot, restartBot } = useBotCommand();
-  const { openDialog, closeDialog } = useDialogGlobal();
+  // const { openDialog, closeDialog } = useDialogGlobal();
   const { balanceQuery } = useBotInfo();
 
   const isStopBotMutating = useIsMutating({ mutationKey: ["stopBot"] });
@@ -116,7 +106,7 @@ function OasisBotSelectCard() {
               className: "cursor-not-allowed",
             }}
           />
-          <Stack className="w-full">
+          {/* <Stack className="w-full">
             <InputLabel htmlFor="leverage">
               <div className="flex flex-row">
                 <Icon src="/icons/control/info.png" alt="info" size={12} className="mr-1" />
@@ -139,7 +129,7 @@ function OasisBotSelectCard() {
               }}
               disabled
             />
-          </Stack>
+          </Stack> */}
         </Stack>
       </CardContent>
       <CardFooter className="bottom-2">

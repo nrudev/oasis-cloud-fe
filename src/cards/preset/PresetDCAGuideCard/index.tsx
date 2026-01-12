@@ -29,11 +29,7 @@ export default function PresetDCAGuideCard() {
   };
   return (
     <Card sx={{ maxWidth: 768 }}>
-      <CardHeader
-        id="dca-setting"
-        title="DCA 회차별 매수 금액 가이드"
-        subtitle="하락장 세팅이 선택되었습니다"
-      />
+      <CardHeader id="dca-setting" title="DCA 회차별 매수 금액 가이드" />
       <CardContent className="flex h-full w-full flex-row gap-5">
         <Box className="flex h-full w-1/2">
           <Guide onDataChange={handleDataChange} />

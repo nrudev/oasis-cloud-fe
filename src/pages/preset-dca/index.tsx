@@ -30,7 +30,7 @@ function PresetDCA() {
           </Box>
 
           <Box className="h-full w-1/4">
-            <PresetDCASettingCard />
+            <PresetDCASettingCard isConnected={isConnected} />
           </Box>
           <Stack className="w-2/4 gap-4">
             <Box className="w-full">
