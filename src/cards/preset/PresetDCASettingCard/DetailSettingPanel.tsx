@@ -1,9 +1,12 @@
 import { useState } from "react";
 
 import { Stack } from "@mui/material";
+import { useAtom } from "jotai";
 
 import FormSelect from "@/components/form/FormSelect";
 import FormTextField from "@/components/form/FormTextField";
+import exchangeAtom from "@/datas/exchange";
+import { presetDCAAtom } from "@/datas/preset";
 
 import AdditionFormTextField from "./AdditionFormTextField";
 
@@ -25,6 +28,10 @@ const leverageList = [
   { label: "20", value: "20" },
 ];
 
+const noLeverage = [
+  { label: "업비트 거래소는 레버리지 설정 불가", value: "업비트 거래소는 레버리지 설정 불가" },
+];
+
 const marginTypeList = [
   { label: "Cross(교차)", value: "Cross(교차)" },
   { label: "Isolated(격리)", value: "Isolated(격리)" },
@@ -42,22 +49,19 @@ const multipleList = [
   { label: "2배수", value: "2배수" },
 ];
 
-const totalCountList = [
-  { label: "6회", value: "6회" },
-  { label: "7회", value: "7회" },
-  { label: "8회", value: "8회" },
-  { label: "9회", value: "9회" },
-  { label: "10회", value: "10회" },
-];
 export default function DetailSettingPanel({ value, index }: Props) {
+  const [exchange] = useAtom(exchangeAtom);
   const [selectedPostion, setSelectedPosition] = useState(postionList[0].value);
-  const [selectedLeverage, setSelectedLeverage] = useState(leverageList[0].value);
+  const [selectedLeverage, setSelectedLeverage] = useState(
+    exchange === "upbit" ? noLeverage[0].value : leverageList[0].value,
+  );
   const [selectedMarginType, setSelectedMarginType] = useState(marginTypeList[0].value);
   const [selectedTotalBalance, setSelectedTotalBalance] = useState(totalBalanceList[0].value);
   const [selectedMutiple, setSelectedMultiple] = useState(multipleList[0].value);
-  const [name, setName] = useState("");
-  const [selectedTotalCount, setSelectedTotalCount] = useState(totalCountList[0].value);
-  const [gap, setGap] = useState<string[]>([""]);
+
+  const [gap, setGap] = useState<number[]>([0]);
+  const [preset, setPreset] = useAtom(presetDCAAtom);
+
   return (
     <div
       role="tabpanel"
@@ -71,10 +75,13 @@ export default function DetailSettingPanel({ value, index }: Props) {
           <FormTextField
             id="name"
             label="프리셋 이름"
-            value={name}
-            setValue={setName}
+            value={preset?.presetName}
+            setValue={v => {
+              preset && setPreset({ ...preset, presetName: v as string });
+            }}
             placeholder="프리셋 이름 입력"
           />
+
           <FormTextField id="indicator" label="설정 보조 지표" value="DCA 마틴" readOnly />
           <FormSelect
             id="position"
@@ -87,10 +94,11 @@ export default function DetailSettingPanel({ value, index }: Props) {
           <FormSelect
             id="leverage"
             label="레버리지"
-            items={leverageList}
+            items={exchange === "upbit" ? noLeverage : leverageList}
             value={selectedLeverage}
             setValue={setSelectedLeverage}
             variant="standard"
+            disabled={exchange === "upbit"}
           />
           <FormSelect
             id="marginType"
@@ -123,16 +131,32 @@ export default function DetailSettingPanel({ value, index }: Props) {
             setValue={setGap}
             placeholder="추가 진입 간격 입력"
           />
-          <FormSelect
-            id="totalCount"
-            label="총 진입 횟수"
-            items={totalCountList}
-            value={selectedTotalCount}
-            setValue={setSelectedTotalCount}
-            variant="standard"
+          <FormTextField
+            id="profitRate"
+            label="익절률 (%)"
+            value={preset?.profitCutRate}
+            setValue={v => {
+              preset && setPreset({ ...preset, profitCutRate: v as number });
+            }}
+            placeholder="익절율 입력"
           />
-          <FormTextField id="profitRate" label="익절율" value="하락장세팅" readOnly />
-          <FormTextField id="lossRate" label="손절율" value="하락장세팅" readOnly />
+          <FormTextField
+            id="lossRate"
+            label="손절률 (%)"
+            value={preset?.lossCutRate}
+            setValue={v => {
+              if (!preset) return;
+              const str = String(v).trim();
+              if (str === "" || str === "-") {
+                setPreset({ ...preset, lossCutRate: "" as unknown as number });
+                return;
+              }
+
+              const negativeValue = -Math.abs(Number(v));
+              setPreset({ ...preset, lossCutRate: negativeValue });
+            }}
+            placeholder="손절율 입력"
+          />
         </Stack>
       )}
     </div>

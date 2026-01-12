@@ -43,12 +43,28 @@ const presetWeightInit: PresetWeightType = {
   카운팅12: 0,
 };
 
+const presetDCAInit = {
+  id: 0,
+  presetName: "",
+  profitCutRate: 0,
+  lossCutRate: 0,
+  dcaSetting: 0,
+};
+
 const presetWeightAtom = atomWithReset<PresetWeightType>(presetWeightInit);
 presetWeightAtom.debugLabel = "presetWeightAtom";
 
 const presetMenuAtom = atomWithReset<"preset" | "indicator">("preset");
 presetMenuAtom.debugLabel = "presetMenuAtom";
 
-export { presetAtom, presetMenuAtom, presetWeightAtom };
-export { presetInit, presetWeightInit };
+const presetDCAAtom = atomWithReset<Preset.PresetDCAT>(presetDCAInit);
+
+export {
+  presetAtom,
+  presetDCAAtom,
+  presetInit,
+  presetMenuAtom,
+  presetWeightAtom,
+  presetWeightInit,
+};
 export type { PresetWeightType };

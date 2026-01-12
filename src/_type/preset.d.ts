@@ -19,4 +19,12 @@ declare namespace Preset {
     exchangeId: number;
     isDefault?: boolean;
   }
+
+  interface PresetDCAT {
+    id: number;
+    presetName: string;
+    profitCutRate: number;
+    lossCutRate: number;
+    dcaSetting: number;
+  }
 }

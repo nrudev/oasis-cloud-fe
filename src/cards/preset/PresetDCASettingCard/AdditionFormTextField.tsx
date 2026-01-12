@@ -36,8 +36,10 @@ function AdditionFormTextField<T>(props: FormTextFieldProps<T> & Omit<InputBaseP
   const { id, label, className, setValue, value = [], inputLabelProps, ...rest } = props;
   const [gap, setGap] = useState(value.length || 1);
   const plusButtonClick = () => {
-    setGap(prev => prev + 1);
-    setValue && setValue(prev => [...(prev || []), "" as T]); // 새로운 빈 값 추가
+    if (gap < 12) {
+      setGap(prev => prev + 1);
+      setValue && setValue(prev => [...(prev || []), "" as T]); // 새로운 빈 값 추가
+    }
   };
   const minusButtonClick = (index: number) => {
     if (gap > 1) {
@@ -74,6 +76,8 @@ function AdditionFormTextField<T>(props: FormTextFieldProps<T> & Omit<InputBaseP
                   textAlign: "center",
                 },
               }}
+              // inputProps={{ maxLength: 2 }}
+              type="number"
               startAdornment={<InputAdornment position="start">{index + 1}회차</InputAdornment>}
               endAdornment={
                 <InputAdornment position="end">
@@ -84,6 +88,7 @@ function AdditionFormTextField<T>(props: FormTextFieldProps<T> & Omit<InputBaseP
               }
               onChange={e => {
                 const v = e.target.value;
+                if (v.length > 2) return;
                 // const val: T = typeof v === "number" ? (Number(v) as T) : (v as T);
                 setValue &&
                   setValue(prev => {

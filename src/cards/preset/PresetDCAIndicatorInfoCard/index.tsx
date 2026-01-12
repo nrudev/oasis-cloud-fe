@@ -13,11 +13,7 @@ import Description from "./Description";
 export default function PresetDCAIndicatorInfoCard() {
   return (
     <Card sx={{ maxWidth: 768 }}>
-      <CardHeader
-        id="dca-setting"
-        title="DCA 보조지표 설명"
-        subtitle="하락장 세팅이 선택되었습니다"
-      />
+      <CardHeader id="dca-setting" title="DCA 보조지표 설명" />
       <CardContent className="flex h-full w-full flex-col">
         <Image src={Chart} alt="프리셋 설정 이미지" width={725} height={200} className="w-full" />
 
