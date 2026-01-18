@@ -1,13 +1,6 @@
 import { useState } from "react";
 
-import {
-  CardContent,
-  InputAdornment,
-  InputBase,
-  InputLabel,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { CardContent, InputAdornment, Stack } from "@mui/material";
 import { sendGAEvent, sendGTMEvent } from "@next/third-parties/google";
 import { useAtom } from "jotai";
 
@@ -15,10 +8,8 @@ import Card from "@/cards/Card";
 import CardButton from "@/cards/CardButton";
 import CardFooter from "@/cards/CardFooter";
 import CardHeader from "@/cards/CardHeader";
-import Icon from "@/components/Icon";
 import ExchangeChip from "@/components/chip/ExchangeChip";
 import InfoDialog from "@/components/dialog/InfoDialog";
-import LeverageNoticeDialog from "@/components/dialog/LeverageNoticeDialog";
 import useDialogGlobal from "@/components/dialog/useDialogGlobal";
 import FormSelect from "@/components/form/FormSelect";
 import FormTextField from "@/components/form/FormTextField";
@@ -216,7 +207,7 @@ function ConnectOasisBotRunCard() {
             value={standardMinute}
             setValue={setStandardMinute}
           />
-          <Stack className="w-full">
+          {/* <Stack className="w-full">
             <InputLabel htmlFor="leverage">
               <div className="flex flex-row">
                 <Icon src="/icons/control/info.png" alt="info" size={12} className="mr-1" />
@@ -239,7 +230,7 @@ function ConnectOasisBotRunCard() {
               }}
               disabled
             />
-          </Stack>
+          </Stack> */}
         </Stack>
       </CardContent>
       <CardFooter className="bottom-2">
