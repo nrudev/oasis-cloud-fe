@@ -46,8 +46,8 @@ const presetWeightInit: PresetWeightType = {
 const presetDCAInit = {
   id: 0,
   presetName: "",
-  profitCutRate: 0,
-  lossCutRate: 0,
+  profitCutRate: "",
+  lossCutRate: "",
   dcaSetting: 0,
 };
 
