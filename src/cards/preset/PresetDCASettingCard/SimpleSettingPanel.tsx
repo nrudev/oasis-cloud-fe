@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Stack } from "@mui/material";
 import { useAtom } from "jotai";
 
+import FormNumField from "@/components/form/FormNumField";
 import FormSelect from "@/components/form/FormSelect";
 import FormTextField from "@/components/form/FormTextField";
 import exchangeAtom from "@/datas/exchange";
@@ -154,17 +155,17 @@ export default function SimpleSettingPanel({ value, index }: Props) {
             setValue={setSelectedTotalCount}
             variant="standard"
           />
-          <FormTextField
+          <FormNumField
             id="profitRate"
             label="익절률 (%)"
             type="number"
             value={preset?.profitCutRate}
             setValue={v => {
-              preset && setPreset({ ...preset, profitCutRate: v as number });
+              preset && setPreset({ ...preset, profitCutRate: v as string });
             }}
             placeholder="익절율 입력"
           />
-          <FormTextField
+          <FormNumField
             id="lossRate"
             label="손절률 (%)"
             type="number"
@@ -173,12 +174,12 @@ export default function SimpleSettingPanel({ value, index }: Props) {
               if (!preset) return;
               const str = String(v).trim();
               if (str === "" || str === "-") {
-                setPreset({ ...preset, lossCutRate: "" as unknown as number });
+                setPreset({ ...preset, lossCutRate: "" as string });
                 return;
               }
 
               const negativeValue = -Math.abs(Number(v));
-              setPreset({ ...preset, lossCutRate: negativeValue });
+              setPreset({ ...preset, lossCutRate: String(negativeValue) });
             }}
             placeholder="손절율 입력"
           />
