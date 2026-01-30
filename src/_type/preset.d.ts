@@ -23,8 +23,8 @@ declare namespace Preset {
   interface PresetDCAT {
     id: number;
     presetName: string;
-    profitCutRate: number;
-    lossCutRate: number;
+    profitCutRate: string;
+    lossCutRate: string;
     dcaSetting: number;
   }
 }

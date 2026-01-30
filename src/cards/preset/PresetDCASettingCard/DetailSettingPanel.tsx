@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Stack } from "@mui/material";
 import { useAtom } from "jotai";
 
+import FormNumField from "@/components/form/FormNumField";
 import FormSelect from "@/components/form/FormSelect";
 import FormTextField from "@/components/form/FormTextField";
 import exchangeAtom from "@/datas/exchange";
@@ -59,7 +60,7 @@ export default function DetailSettingPanel({ value, index }: Props) {
   const [selectedTotalBalance, setSelectedTotalBalance] = useState(totalBalanceList[0].value);
   const [selectedMutiple, setSelectedMultiple] = useState(multipleList[0].value);
 
-  const [gap, setGap] = useState<number[]>([0]);
+  const [gap, setGap] = useState<string[]>([""]);
   const [preset, setPreset] = useAtom(presetDCAAtom);
 
   return (
@@ -129,18 +130,18 @@ export default function DetailSettingPanel({ value, index }: Props) {
             label="추가 진입 간격"
             value={gap}
             setValue={setGap}
-            placeholder="추가 진입 간격 입력"
+            placeholder="-"
           />
-          <FormTextField
+          <FormNumField
             id="profitRate"
             label="익절률 (%)"
             value={preset?.profitCutRate}
             setValue={v => {
-              preset && setPreset({ ...preset, profitCutRate: v as number });
+              preset && setPreset({ ...preset, profitCutRate: v as string });
             }}
             placeholder="익절율 입력"
           />
-          <FormTextField
+          <FormNumField
             id="lossRate"
             label="손절률 (%)"
             value={preset?.lossCutRate}
@@ -148,12 +149,12 @@ export default function DetailSettingPanel({ value, index }: Props) {
               if (!preset) return;
               const str = String(v).trim();
               if (str === "" || str === "-") {
-                setPreset({ ...preset, lossCutRate: "" as unknown as number });
+                setPreset({ ...preset, lossCutRate: "" as string });
                 return;
               }
 
               const negativeValue = -Math.abs(Number(v));
-              setPreset({ ...preset, lossCutRate: negativeValue });
+              setPreset({ ...preset, lossCutRate: String(negativeValue) });
             }}
             placeholder="손절율 입력"
           />
